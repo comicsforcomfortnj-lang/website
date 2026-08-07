@@ -3,44 +3,33 @@
 <head>
 <!--
   ============================================================================
-  COMICS FOR COMFORT: one-page website
+  COMICS FOR COMFORT
   ----------------------------------------------------------------------------
-  ADMINS: You almost never need to touch this file's design or layout.
-  Everything you'll want to change (the email, the tally numbers, who runs it,
-  and the photo gallery) lives in ONE clearly-marked box further down, inside
-  the <script> tag. Search this file for:   EDIT YOUR SITE HERE
+  ADMINS: you don't need to touch the design or layout.
+  Everything you'll actually change (email, tally numbers, the crew, photos)
+  lives in ONE box near the bottom. Search this file for:  EDIT YOUR SITE HERE
   A plain-English guide is in README.md next to this file.
   ============================================================================
 -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Comics for Comfort</title>
-<meta name="description" content="We sort and screen donated comics and get them to kids' clubs, libraries, children's hospitals, and troops overseas. A summer 2026 project out of Kinnelon, NJ." />
+<meta name="description" content="Comics for Comfort collects donated comic books, screens every issue, and delivers them to clubs, libraries, children's hospitals, and troops overseas. A summer 2026 project from Kinnelon, New Jersey." />
 
-<!-- When shared in an email or on an application, this controls the link preview. -->
 <meta property="og:title" content="Comics for Comfort" />
-<meta property="og:description" content="We sort and screen donated comics and get them to kids' clubs, libraries, children's hospitals, and troops overseas." />
+<meta property="og:description" content="We collect donated comic books, screen every issue, and deliver them to clubs, libraries, children's hospitals, and troops overseas." />
 <meta property="og:type" content="website" />
-<meta name="theme-color" content="#E23B2E" />
-<meta name="twitter:card" content="summary" />
+<meta property="og:image" content="art/Scene3.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Comics for Comfort" />
-<meta name="twitter:description" content="We sort and screen donated comics and get them to kids' clubs, libraries, children's hospitals, and troops overseas." />
-<!-- Link-preview thumbnail (the logo). Once the site is live, changing these to the
-     logo's full https:// address gives the most reliable previews. -->
-<meta property="og:image" content="comicsforcomfortlogo.jpg" />
-<meta name="twitter:image" content="comicsforcomfortlogo.jpg" />
+<meta name="twitter:description" content="We collect donated comic books, screen every issue, and deliver them to clubs, libraries, children's hospitals, and troops overseas." />
+<meta name="theme-color" content="#16130F" />
+<link rel="icon" href="logo.svg" type="image/svg+xml" />
 
-<!-- Browser-tab icon: the logo. -->
-<link rel="icon" href="comicsforcomfortlogo.jpg" />
-
-<!-- Fonts. If the page is opened without internet, it falls back to clean
-     system fonts automatically, so the site still works. -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bangers&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-<!-- Runs before first paint: applies a saved light/dark choice (no flash) and
-     turns on entrance animations. Independent of the editable config below. -->
 <script>
   (function () {
     try {
@@ -51,645 +40,756 @@
 </script>
 
 <style>
-  /* ---------- Design tokens ---------- */
-  :root {
-    --paper:    #FBF6EA;
-    --paper-2:  #F1E8D2;
-    --ink:      #16181F;
-    --ink-soft: #4A4D59;
-    --red:      #E23B2E;
-    --red-ink:  #C62A20;
-    --btn-red:  #C62A20;
-    --green:    #1E9E6A;
-    --yellow:   #F2B01B;
-    --orange:   #EC943C;
-    --blue:     #37708A;
-    --line:     #16181F;
-    --dot:      rgba(22, 24, 31, 0.14);
-    --card:     #FFFDF6;
-    --shadow:   #16181F;
-    --focus:    #37708A;
+/* ============================================================================
+   CLASSIC COMIC SYSTEM
+   Four printing colours on newsprint, used the way a comic actually uses them:
+     RED     action. Exactly ONE red on the page (--red-solid). Buttons,
+             the publisher strip, key words, the logo heart, panel shadows.
+     YELLOW  fills and labels that sit on ink. Caption boxes, burst fills,
+             badges. Never small text on newsprint.
+     BLUE    structure. Secondary rules and focus.
+     INK     every outline and all body copy.
+   The comic artwork supplies everything else. Dark mode stays in the same
+   warm newsprint-and-ink family so the two themes are one design.
+   ========================================================================= */
+:root {
+  --paper:    #F5EBD7;
+  --paper-2:  #EADCBE;
+  --paper-3:  #DFCCA6;
+  --card:     #FFFCF3;
+  --ink:      #16130F;
+  --ink-soft: #4A443B;
 
-    /* Fixed colors for the contact band. Intentionally do NOT flip with theme,
-       so that inky call-to-action panel stays consistent in light and dark. */
-    --ink-fixed:    #16181F;
-    --paper-fixed:  #F7F1E1;
-    --card-fixed:   #FFFDF6;
-    --muted-fixed:  #5A5D68;
-    --yellow-fixed: #F7B733;
-    --orange-fixed: #EC943C;
+  /* ONE red. --red-solid never changes, so the same red appears on the
+     button, the strip, the logo heart and the shadows in both themes.
+     --red is that same red as text, lifted only where a dark ground needs it. */
+  --red-solid: #C0151A;
+  --red:       #C0151A;
+  --yellow:    #FFD21E;
+  --blue:      #1B4FA8;
+  --green:     #1E9E5A;
 
-    --font-display: "Bricolage Grotesque", "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
-    --font-body:    "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --font-mono:    "Space Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --line:     #16130F;
+  --shadow:   #16130F;
+  --focus:    var(--blue);
+  --dot:      rgba(22,19,15,.16);
 
-    --maxw: 1120px;
-    --pad: clamp(1.15rem, 4vw, 2.5rem);
-    --panel-shadow: 6px 6px 0 var(--shadow);
-    --panel-shadow-sm: 4px 4px 0 var(--shadow);
-  }
+  /* fixed: for artwork, dark bands and anything printed on colour */
+  --fx-ink:    #16130F;
+  --fx-paper:  #F7EFDC;
+  --fx-dim:    #C6BBA4;
+  --fx-yellow: #FFD21E;
+  --fx-scrim:  22,19,15;   /* the ink black, as rgb parts for band gradients */
 
-  :root[data-theme="dark"], html[data-theme="dark"] {
-    --paper:    #14161E;
-    --paper-2:  #1B1E29;
-    --ink:      #F3EDDC;
-    --ink-soft: #B9BCCB;
-    --red:      #FF5A4D;
-    --red-ink:  #FF5A4D;
-    --green:    #2FC087;
-    --yellow:   #FFC844;
-    --orange:   #F2A65A;
-    --blue:     #7FB8D0;
-    --line:     #F3EDDC;
-    --dot:      rgba(243, 237, 220, 0.16);
-    --card:     #20232F;
-    --shadow:   #05060A;
-    --focus:    #7FB8D0;
-  }
+  --display: "Anton", "Arial Narrow", Impact, system-ui, sans-serif;
+  --fx:      "Bangers", "Anton", Impact, cursive;
+  --body:    "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --paper:    #14161E;
-      --paper-2:  #1B1E29;
-      --ink:      #F3EDDC;
-      --ink-soft: #B9BCCB;
-      --red:      #FF5A4D;
-      --red-ink:  #FF5A4D;
-      --green:    #2FC087;
-      --yellow:   #FFC844;
-      --orange:   #F2A65A;
-      --blue:     #7FB8D0;
-      --line:     #F3EDDC;
-      --dot:      rgba(243, 237, 220, 0.16);
-      --card:     #20232F;
-      --shadow:   #05060A;
-      --focus:    #7FB8D0;
-    }
+  --maxw: 1180px;
+  --pad: clamp(1.15rem, 4vw, 2.6rem);
+  --bw: 3px;
+  --pop: 6px 6px 0 var(--shadow);
+  --pop-sm: 4px 4px 0 var(--shadow);
+}
+/* Dark mode is the same newsprint press run, printed at night: warm blacks
+   in the ink family, never a cool violet, so it sits with the fixed bands. */
+:root[data-theme="dark"] {
+  --paper:    #17130E;
+  --paper-2:  #1F1A13;
+  --paper-3:  #2A2318;
+  --card:     #221C15;
+  --ink:      #F6EEDD;
+  --ink-soft: #C0B7A6;
+  --red:      #FF6A60;      /* the one red, lifted so it reads on dark */
+  --line:     #F6EEDD;
+  --shadow:   #000000;
+  --focus:    #F3C969;
+  --dot:      rgba(246,238,221,.18);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper:    #17130E;
+    --paper-2:  #1F1A13;
+    --paper-3:  #2A2318;
+    --card:     #221C15;
+    --ink:      #F6EEDD;
+    --ink-soft: #C0B7A6;
+    --red:      #FF6A60;
+    --line:     #F6EEDD;
+    --shadow:   #000000;
+    --focus:    #F3C969;
+    --dot:      rgba(246,238,221,.18);
   }
+}
 
-  /* ---------- Base ---------- */
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: var(--font-body);
-    font-size: clamp(1rem, 0.5vw + 0.95rem, 1.12rem);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    overflow-x: hidden;
-  }
+body {
+  margin: 0; background-color: var(--paper); color: var(--ink);
+  background-image: radial-gradient(var(--dot) .5px, transparent .6px);
+  background-size: 4px 4px;
+  font-family: var(--body); font-size: clamp(1rem,.4vw + .94rem,1.07rem); line-height: 1.66;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+h1,h2,h3 { font-family: var(--display); font-weight: 400; line-height: 1.02; letter-spacing: .005em;
+  margin: 0; text-transform: uppercase; }
+p { margin: 0 0 1.05rem; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
 
-  h1, h2, h3 { font-family: var(--font-display); font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; margin: 0; }
-  p { margin: 0 0 1rem; }
-  a { color: inherit; }
+.wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--pad); }
+.sec { padding-block: clamp(3.2rem,6.5vw,5.4rem); }
+:where(a,button,[tabindex]):focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: .8rem; top: -4rem; z-index: 99; background: var(--red-solid); color: #fff;
+  padding: .7rem 1rem; font-weight: 700; border: var(--bw) solid var(--fx-ink); text-decoration: none; transition: top .18s ease; }
+.skip:focus { top: .8rem; }
 
-  .wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--pad); }
+/* ---------- comic parts (drawn, not photographed) ---------- */
+.halftone { background-image: radial-gradient(var(--dot) 1.5px, transparent 1.6px); background-size: 7px 7px; }
 
-  .eyebrow {
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    font-size: 0.74rem;
-    font-weight: 700;
-    color: var(--red-ink);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .eyebrow::before { content: ""; width: 1.6rem; height: 3px; background: var(--red-ink); display: inline-block; }
+/* speech balloon, the same shape as the logo, used to carry the crew's own rule */
+.balloon { position: relative; background: var(--card); border: var(--bw) solid var(--line);
+  border-radius: 26px; box-shadow: var(--pop); padding: 1.3rem 1.5rem; max-width: 46ch;
+  font-family: var(--display); font-weight: 400; font-size: clamp(1.05rem,2.1vw,1.5rem);
+  text-transform: uppercase; letter-spacing: .02em; line-height: 1.18; }
+.balloon::before, .balloon::after { content: ""; position: absolute; left: 42px; width: 0; height: 0; }
+.balloon::before { bottom: -26px; border: 13px solid transparent; border-top-color: var(--line); border-right-width: 19px; }
+.balloon::after { bottom: -17px; border: 9px solid transparent; border-top-color: var(--card); border-right-width: 14px; }
+.balloon .sig { display: block; margin-top: .7rem; font-family: var(--body); font-weight: 700;
+  font-size: .66rem; letter-spacing: .14em; color: var(--ink-soft); }
 
-  .skip {
-    position: absolute; left: 0.75rem; top: -3rem; z-index: 50;
-    background: var(--btn-red); color: #fff; padding: 0.6rem 0.9rem; font-weight: 600;
-    border: 2px solid var(--line); transition: top 0.18s ease;
-  }
-  .skip:focus { top: 0.75rem; }
+/* yellow caption box: the narrator's voice */
+.caption {
+  display: inline-block; background: var(--fx-yellow); color: var(--fx-ink);
+  border: var(--bw) solid var(--fx-ink); box-shadow: var(--pop-sm);
+  padding: .55rem .85rem; font-weight: 700; font-size: .76rem; letter-spacing: .1em;
+  text-transform: uppercase; line-height: 1.4;
+}
+/* sound effect lettering */
+.fxword {
+  font-family: var(--fx); color: var(--fx-yellow); line-height: .9; letter-spacing: .02em;
+  -webkit-text-stroke: 3px var(--fx-ink); paint-order: stroke fill;
+  text-shadow: 4px 4px 0 var(--fx-ink); transform: rotate(-6deg); display: inline-block;
+}
+/* section eyebrow */
+.eyebrow { display: inline-flex; align-items: center; gap: .55rem; font-weight: 700; font-size: .72rem;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--red); margin-bottom: .9rem; }
+.eyebrow::before { content: ""; width: 1.6rem; height: 4px; background: var(--red); }
+h2.big { font-size: clamp(2rem,5vw,3.4rem); }
+.lede { font-size: clamp(1.03rem,1.1vw,1.17rem); color: var(--ink-soft); max-width: 60ch; }
 
-  :where(a, button, [tabindex]):focus-visible {
-    outline: 3px solid var(--focus);
-    outline-offset: 3px;
-    border-radius: 2px;
-  }
+/* ---------- buttons ---------- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+  font-family: var(--display); font-size: 1rem; text-transform: uppercase; letter-spacing: .03em;
+  text-decoration: none; cursor: pointer; padding: .85rem 1.4rem;
+  background: var(--card); color: var(--ink); border: var(--bw) solid var(--line); box-shadow: var(--pop-sm);
+  transition: transform .12s ease, box-shadow .12s ease; }
+.btn:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--shadow); }
+.btn:active { transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--shadow); }
+.btn--go { background: var(--red-solid); color: #fff; }
+.btn .arw { transition: transform .15s ease; }
+.btn:hover .arw { transform: translateX(3px); }
+.on-art .btn { border-color: var(--fx-ink); box-shadow: 4px 4px 0 var(--fx-ink); }
+.on-art .btn:not(.btn--go) { background: var(--fx-paper); color: var(--fx-ink); }
+.on-art .btn:hover { box-shadow: 6px 6px 0 var(--fx-ink); }
 
-  /* ---------- Buttons ---------- */
-  .btn {
-    display: inline-flex; align-items: center; gap: 0.55rem;
-    font-family: var(--font-display); font-weight: 700; font-size: 1.02rem;
-    text-decoration: none; cursor: pointer;
-    padding: 0.72rem 1.25rem;
-    border: 3px solid var(--line);
-    background: var(--card); color: var(--ink);
-    box-shadow: var(--panel-shadow-sm);
-    transition: transform 0.12s ease, box-shadow 0.12s ease;
-  }
-  .btn:hover { transform: translate(-1px, -1px); box-shadow: 6px 6px 0 var(--shadow); }
-  .btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--shadow); }
-  .btn--primary { background: var(--btn-red); color: #fff; border-color: var(--line); }
-  .btn--primary:hover { background: var(--btn-red); }
-  .btn .arrow { transition: transform 0.15s ease; }
-  .btn:hover .arrow { transform: translateX(3px); }
+/* ---------- header ---------- */
+.hdr { position: sticky; top: 0; z-index: 70; background: var(--fx-ink); border-bottom: var(--bw) solid var(--fx-ink); }
+.hdr .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .5rem; }
+.brand { display: inline-flex; align-items: center; gap: .55rem; text-decoration: none; color: var(--fx-paper); flex: none; }
+.brand svg { width: 32px; height: 32px; flex: none; transition: transform .3s ease; }
+.brand:hover svg { transform: rotate(-8deg) scale(1.07); }
+.brand b { font-family: var(--display); font-weight: 400; font-size: 1.1rem; text-transform: uppercase; letter-spacing: .02em; white-space: nowrap; }
+.nav { display: flex; align-items: center; gap: 1.2rem; }
+.nav-links { display: flex; align-items: center; gap: 1.2rem; }
+.nav a { font-weight: 700; font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; text-decoration: none;
+  color: var(--fx-dim); white-space: nowrap; padding-bottom: 3px; border-bottom: 3px solid transparent; }
+.nav a:hover, .nav a.on { color: var(--fx-paper); border-bottom-color: var(--red-solid); }
+.tgl { display: inline-grid; place-items: center; width: 34px; height: 34px; flex: none;
+  background: var(--fx-paper); color: var(--fx-ink); border: 2px solid var(--fx-paper); cursor: pointer; transition: transform .12s ease; }
+.tgl:hover { transform: translateY(-2px); }
+.tgl svg { width: 17px; height: 17px; }
+@media (max-width: 1000px) { .nav-links { display: none; } }
+@media (max-width: 340px) { .brand b { display: none; } }
 
-  /* ---------- Header ---------- */
-  .site-header {
-    position: sticky; top: 0; z-index: 40;
-    background: var(--paper);
-    border-bottom: 3px solid var(--line);
-  }
-  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 0.7rem; }
-  .brand { display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--ink); }
-  .brand-burst { width: 36px; height: 36px; flex: none; border-radius: 50%; object-fit: cover; border: 2px solid var(--line); }
-  .brand-name { font-family: var(--font-display); font-weight: 800; font-size: 1.18rem; letter-spacing: -0.02em; }
-  .site-nav { display: flex; align-items: center; gap: 1.35rem; }
-  .nav-links { display: flex; align-items: center; gap: 1.35rem; }
-  .site-nav a {
-    font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em;
-    text-decoration: none; color: var(--ink-soft); padding-bottom: 2px; border-bottom: 2px solid transparent;
-  }
-  .site-nav a:hover { color: var(--ink); border-bottom-color: var(--red); }
-  .theme-toggle {
-    display: inline-grid; place-items: center; width: 40px; height: 40px;
-    background: var(--card); border: 3px solid var(--line); box-shadow: var(--panel-shadow-sm);
-    cursor: pointer; color: var(--ink); transition: transform 0.12s ease, box-shadow 0.12s ease;
-  }
-  .theme-toggle:hover { transform: translate(-1px,-1px); box-shadow: 5px 5px 0 var(--shadow); }
-  .theme-toggle:active { transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--shadow); }
-  .theme-toggle svg { width: 20px; height: 20px; }
-  @media (max-width: 820px) { .nav-links { display: none; } }
+/* publisher strip, like the bar across the top of a cover */
+.strip { background: var(--red-solid); color: #fff; border-bottom: var(--bw) solid var(--fx-ink);
+  font-weight: 700; font-size: .68rem; letter-spacing: .15em; text-transform: uppercase; }
+.strip .wrap { display: flex; flex-wrap: wrap; gap: .35rem 1.3rem; justify-content: space-between; padding-block: .5rem; }
+.strip b { color: var(--fx-yellow); }
 
-  /* ---------- Hero ---------- */
-  .hero { position: relative; border-bottom: 3px solid var(--line); overflow: hidden;
-    background: radial-gradient(115% 90% at 82% 28%, color-mix(in srgb, var(--orange) 24%, transparent), transparent 62%); }
-  .hero::before {
-    content: ""; position: absolute; inset: 0; z-index: 0;
-    background-image: radial-gradient(var(--dot) 1.6px, transparent 1.7px);
-    background-size: 13px 13px;
-    -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 100%);
-            mask-image: linear-gradient(to bottom, #000 40%, transparent 100%);
-  }
-  .hero .wrap { position: relative; z-index: 1; padding-block: clamp(3rem, 8vw, 6rem) clamp(3rem, 7vw, 5rem);
-    display: grid; grid-template-columns: 1.25fr 0.75fr; gap: clamp(1.5rem, 5vw, 3.5rem); align-items: center; }
-  .hero-art { display: flex; justify-content: center; }
-  .hero-logo {
-    width: clamp(170px, 26vw, 300px); aspect-ratio: 1 / 1; border-radius: 50%; object-fit: cover;
-    border: 4px solid var(--line); box-shadow: 8px 8px 0 var(--red); background: var(--card);
-  }
-  @media (max-width: 820px) {
-    .hero .wrap { grid-template-columns: 1fr; }
-    .hero-art { order: -1; justify-content: flex-start; }
-    .hero-logo { width: clamp(130px, 34vw, 190px); }
-  }
+/* ---------- HERO / cover ---------- */
+.hero { border-bottom: var(--bw) solid var(--line); position: relative; overflow: clip; background: var(--paper-2); }
+.hero::before { content: ""; position: absolute; inset: 0;
+  background-image: radial-gradient(var(--dot) 1.4px, transparent 1.5px); background-size: 9px 9px;
+  -webkit-mask-image: linear-gradient(to bottom,#000,transparent 80%); mask-image: linear-gradient(to bottom,#000,transparent 80%); }
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1fr 1.04fr; gap: clamp(1.5rem,4vw,3.2rem);
+  align-items: center; padding-block: clamp(2.2rem,5vw,4rem); }
+.hero h1 { font-size: clamp(2.5rem,6.4vw,4.9rem); margin-bottom: 1.1rem; line-height: .98; }
+.hero h1 .pop { color: var(--red); }
+.hero .lede { margin-bottom: 1.7rem; max-width: 42ch; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 1.6rem; }
+.cover-foot { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem; }
+.stamp { border: 2px solid var(--ink); padding: .3rem .5rem; transform: rotate(-3deg); text-align: center;
+  font-size: .53rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; line-height: 1.3; }
+.stamp b { display: block; font-family: var(--display); font-weight: 400; font-size: .72rem; letter-spacing: .03em; }
+.barcode { display: flex; align-items: flex-end; gap: 1.5px; height: 32px; padding: 3px 4px; background: var(--card); border: 2px solid var(--ink); }
+.barcode i { display: block; width: 2px; height: 100%; background: var(--ink); }
+.barcode i:nth-child(3n) { width: 3px; } .barcode i:nth-child(4n) { height: 76%; } .barcode i:nth-child(5n) { width: 1px; }
 
-  .cornerbox {
-    display: inline-block; border: 3px solid var(--line); background: var(--orange-fixed);
-    box-shadow: var(--panel-shadow-sm); padding: 0.55rem 0.85rem; transform: rotate(-2deg);
-    font-family: var(--font-mono); line-height: 1.25; margin-bottom: 1.6rem;
-  }
-  .cornerbox b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 0.95rem; letter-spacing: 0.02em; color: var(--ink-fixed); }
-  .cornerbox span { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-fixed); }
+/* fanned covers: real books, true proportions, nothing cropped */
+.fan { display: flex; align-items: flex-end; justify-content: center; padding-block: .8rem; }
+.fan figure { margin: 0; width: 27%; flex: none; transform-origin: bottom center;
+  transition: transform .35s cubic-bezier(.22,.61,.36,1); }
+.fan figure + figure { margin-left: -8.5%; }
+.fan img { width: 100%; height: auto; border: var(--bw) solid var(--fx-ink); box-shadow: 6px 6px 0 rgba(22,19,15,.42); background: var(--fx-paper); }
+.fan figure:nth-child(1) { transform: rotate(-11deg) translateY(6%); }
+.fan figure:nth-child(2) { transform: rotate(-5.5deg) translateY(1.5%); }
+.fan figure:nth-child(3) { transform: rotate(0deg) translateY(-4%); z-index: 5; width: 29%; }
+.fan figure:nth-child(4) { transform: rotate(5.5deg) translateY(1.5%); }
+.fan figure:nth-child(5) { transform: rotate(11deg) translateY(6%); }
+.fan figure:hover { z-index: 9; }
+@media (hover:hover) and (prefers-reduced-motion: no-preference) {
+  .fan figure:hover { transform: translateY(-14px) rotate(0deg) scale(1.04); }
+}
+@media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } .fan { order: -1; } }
+@media (max-width: 600px) {
+  .fan { padding-inline: 8px; }
+  .fan figure { width: 29%; } .fan figure + figure { margin-left: -10%; }
+  .fan figure:nth-child(1) { transform: rotate(-7deg) translateY(5%); }
+  .fan figure:nth-child(5) { transform: rotate(7deg) translateY(5%); }
+  .fan figure:nth-child(3) { width: 31%; }
+}
 
-  .hero h1 {
-    font-size: clamp(2.9rem, 10vw, 6.6rem);
-    max-width: 15ch;
-    margin-bottom: 1.1rem;
-  }
-  .hero h1 .pop { color: var(--red); }
-  .hero-lede {
-    font-size: clamp(1.12rem, 1.4vw, 1.4rem);
-    max-width: 44ch; color: var(--ink-soft); margin-bottom: 1.9rem;
-  }
-  .hero-cta { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+/* ---------- full-bleed art bands ---------- */
+.band { position: relative; isolation: isolate; overflow: hidden; border-block: var(--bw) solid var(--fx-ink); }
+.band > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.band::after { content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(98deg, rgba(var(--fx-scrim),.92) 0%, rgba(var(--fx-scrim),.82) 38%, rgba(var(--fx-scrim),.38) 70%, rgba(var(--fx-scrim),.12) 100%); }
+/* printed halftone over the artwork: authentic to newsprint, and it keeps the
+   scans from looking soft where a wide screen scales them up */
+.band .dots { position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image: radial-gradient(rgba(22,19,15,.30) 1.1px, transparent 1.2px);
+  background-size: 5px 5px; mix-blend-mode: multiply; }
+.band .wrap { padding-block: clamp(3.4rem,8vw,6rem); }
+.band .inner { max-width: 46ch; color: var(--fx-paper); }
+.band h2 { color: var(--fx-paper); }
+.band p { color: var(--fx-paper); }
+/* the caption box keeps ink on yellow: .band p would otherwise tint it cream */
+.band p.caption, .band .caption { color: var(--fx-ink); }
+.band .eyebrow { color: var(--fx-yellow); }
+.band .eyebrow::before { background: var(--fx-yellow); }
+@media (max-width: 760px) { .band::after { background: linear-gradient(180deg, rgba(var(--fx-scrim),.90) 0%, rgba(var(--fx-scrim),.80) 62%, rgba(var(--fx-scrim),.62) 100%); } }
 
-  /* ---------- Section scaffolding ---------- */
-  .section { padding-block: clamp(3rem, 7vw, 5.5rem); border-bottom: 3px solid var(--line); }
-  .section-head { max-width: 60ch; margin-bottom: 2.4rem; }
-  .section-head h2 { font-size: clamp(2rem, 4.4vw, 3.1rem); margin-top: 0.7rem; }
-  .section-head p { color: var(--ink-soft); margin-top: 0.9rem; margin-bottom: 0; font-size: 1.08rem; }
+/* ---------- COUNT ---------- */
+.count { background: var(--fx-ink); color: var(--fx-paper); border-block: var(--bw) solid var(--fx-ink); position: relative; overflow: hidden; }
+.count::before { content: ""; position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(246,238,221,.12) 1.4px, transparent 1.5px); background-size: 10px 10px; }
+.count .wrap { position: relative; }
+.count .eyebrow { color: var(--fx-yellow); } .count .eyebrow::before { background: var(--fx-yellow); }
+.count h2 { color: var(--fx-paper); }
+.scores { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-top: 2.2rem; }
+.score { --card:#FFFCF3; --ink:#16130F; --ink-soft:#4A443B; --line:#16130F; --dot:rgba(22,19,15,.16);
+  background: var(--card); color: var(--ink); border: var(--bw) solid var(--line);
+  box-shadow: 6px 6px 0 var(--red-solid); padding: 1.3rem 1.1rem 1.1rem;
+  background-image: radial-gradient(var(--dot) 1.4px, transparent 1.5px); background-size: 7px 7px;
+  transition: transform .16s ease, box-shadow .16s ease; }
+.score:hover { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--red-solid); }
+.score .rule { height: 5px; width: 42px; margin-bottom: 1rem; }
+.score:nth-child(1) .rule { background: var(--red-solid); }
+.score:nth-child(2) .rule { background: var(--blue); }
+.score:nth-child(3) .rule { background: var(--fx-yellow); }
+.score:nth-child(4) .rule { background: var(--red-solid); }
+.score .n { font-family: var(--display); font-size: clamp(2.4rem,5.5vw,3.6rem); line-height: .92; font-variant-numeric: tabular-nums; }
+.score .k { display: block; margin-top: .55rem; font-weight: 700; font-size: .66rem; letter-spacing: .13em; text-transform: uppercase; color: var(--ink-soft); }
+.count-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: 1.8rem; }
+.burst { position: relative; display: grid; place-items: center; width: 96px; height: 96px; flex: none; }
+.burst svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.burst span { position: relative; font-family: var(--fx); font-size: 1rem; color: var(--fx-ink); text-align: center; line-height: .95; transform: rotate(-8deg); }
+.count-note { font-weight: 600; font-size: .84rem; letter-spacing: .04em; color: var(--fx-dim); }
+@media (max-width: 800px) { .scores { grid-template-columns: repeat(2,1fr); } }
 
-  .panel {
-    background: var(--card); border: 3px solid var(--line); box-shadow: var(--panel-shadow);
-  }
+/* ---------- PROCESS ---------- */
+.steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.3rem; margin-top: 2.2rem; }
+.step { display: flex; flex-direction: column; }
+/* the art fills the whole panel edge to edge, like a printed frame */
+.step .win { position: relative; background: var(--paper-3); border: var(--bw) solid var(--line);
+  box-shadow: var(--pop); aspect-ratio: 16 / 10; overflow: hidden; }
+.step .win img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.step .fxword { position: absolute; right: 10px; bottom: 8px; font-size: 1.7rem; }
+.step .no { display: inline-block; margin: 1rem 0 .5rem; font-weight: 700; font-size: .68rem; letter-spacing: .15em; color: var(--red); }
+.step h3 { font-size: 1.35rem; margin-bottom: .5rem; }
+.step p { color: var(--ink-soft); font-size: .97rem; margin: 0; }
+@media (max-width: 880px) { .steps { grid-template-columns: 1fr; } }
 
-  /* ---------- Tally ---------- */
-  .tally { background: var(--paper-2); }
-  .tally-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem;
-  }
-  .stat { padding: 1.5rem 1.35rem 1.35rem; position: relative; }
-  .stat .num {
-    font-family: var(--font-mono); font-weight: 700; line-height: 1;
-    font-size: clamp(2.8rem, 6vw, 4.2rem); letter-spacing: -0.03em;
-    font-variant-numeric: tabular-nums;
-  }
-  .stat .label {
-    display: block; margin-top: 0.7rem; font-family: var(--font-mono);
-    text-transform: uppercase; letter-spacing: 0.09em; font-size: 0.76rem; color: var(--ink-soft);
-  }
-  .stat .rule { height: 5px; width: 46px; margin-bottom: 1.1rem; }
-  .stat:nth-child(1) .rule { background: var(--orange); }
-  .stat:nth-child(2) .rule { background: var(--red); }
-  .stat:nth-child(3) .rule { background: var(--blue); }
-  .stat:nth-child(4) .rule { background: var(--yellow); }
-  .tally-note {
-    display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1rem;
-    margin-top: 1.7rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-soft);
-  }
-  .badge-star {
-    position: relative; display: inline-grid; place-items: center;
-    width: 92px; height: 92px; flex: none; color: #fff;
-    font-family: var(--font-display); font-weight: 800; text-align: center; line-height: 1;
-    transform: rotate(-8deg);
-  }
-  .badge-star svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .badge-star span { position: relative; z-index: 1; font-size: 0.82rem; letter-spacing: 0.02em; }
-  @media (max-width: 760px) { .tally-grid { grid-template-columns: repeat(2, 1fr); } }
+/* ---------- SCREENING ---------- */
+/* halftone dot field only, no burst. It fades in below the heading so the type
+   always lands on clean paper. */
+.screen { position: relative; overflow: hidden;
+  background: var(--paper-2); border-block: var(--bw) solid var(--line); }
+.screen::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: radial-gradient(color-mix(in srgb, var(--dot) 70%, transparent) 1.2px, transparent 1.3px);
+  background-size: 8px 8px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 32%);
+          mask-image: linear-gradient(to bottom, transparent 0%, #000 32%); }
+.screen .wrap { position: relative; z-index: 1; }
+.screen .lede { max-width: 44ch; }
+.boxes { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.3rem; margin-top: 2.2rem; }
+/* Flat 2D sorting boxes: a coloured label bar with the category, card below. */
+.boxes { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.3rem; margin-top: 2.2rem; }
+.box { background: var(--card); border: var(--bw) solid var(--line); box-shadow: var(--pop); overflow: hidden; }
+.box .lid { display: flex; align-items: center; justify-content: space-between; gap: .6rem;
+  padding: .7rem .9rem; border-bottom: var(--bw) solid var(--line); color: var(--fx-ink); }
+.box .lid.on-dark { color: #fff; }
+.box .lid b { font-family: var(--display); font-weight: 400; font-size: 1.15rem;
+  text-transform: uppercase; letter-spacing: .03em; }
+.box .lid i { font-style: normal; font-weight: 700; font-size: .62rem; letter-spacing: .14em;
+  text-transform: uppercase; opacity: .8; }
+.box .body { padding: 1.15rem; }
+.box p { margin: 0; color: var(--ink-soft); font-size: .95rem; }
+/* laid out on the table at slight angles. Uses the rotate property, which is
+   independent of transform, so the scroll reveal cannot flatten it. */
+.boxes .box:nth-child(1) { rotate: -1.5deg; }
+.boxes .box:nth-child(2) { rotate:  .9deg; }
+.boxes .box:nth-child(3) { rotate: -.7deg; }
+@media (hover:hover) and (prefers-reduced-motion: no-preference) {
+  .box { transition: rotate .22s cubic-bezier(.22,.61,.36,1), translate .22s cubic-bezier(.22,.61,.36,1), box-shadow .22s ease; }
+  .boxes .box:hover { rotate: 0deg; translate: -3px -3px; box-shadow: 10px 10px 0 var(--shadow); }
+}
+@media (prefers-reduced-motion: reduce) { .boxes .box { rotate: 0deg; } }
+@media (max-width: 880px) { .boxes { grid-template-columns: 1fr; } }
 
-  /* ---------- Mission ---------- */
-  .mission .wrap { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; }
-  .mission-body p { font-size: 1.16rem; }
-  .mission-body p.big { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.18; letter-spacing: -0.01em; color: var(--ink); }
-  .mission-aside { padding: 1.5rem; align-self: start; }
-  .mission-aside h3 { font-size: 1.15rem; margin-bottom: 0.8rem; }
-  .rules { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
-  .rules li { display: grid; grid-template-columns: auto 1fr; gap: 0.7rem; font-size: 0.98rem; color: var(--ink-soft); }
-  .rules .chip { width: 0.95rem; height: 0.95rem; margin-top: 0.32rem; border: 2px solid var(--line); }
-  @media (max-width: 860px) { .mission .wrap { grid-template-columns: 1fr; } }
+/* ---------- SHELF (marquee) ---------- */
+.shelf { background: var(--fx-ink); color: var(--fx-paper); padding-block: clamp(3rem,6vw,4.8rem); overflow: hidden; }
+.shelf .eyebrow { color: var(--fx-yellow); } .shelf .eyebrow::before { background: var(--fx-yellow); }
+.shelf h2 { color: var(--fx-paper); }
+.shelf .lede { color: var(--fx-dim); }
+.marquee { position: relative; margin-top: 2rem; }
+.marquee::before, .marquee::after { content: ""; position: absolute; top: 0; bottom: 0; width: 8vw; z-index: 3; pointer-events: none; }
+.marquee::before { left: 0; background: linear-gradient(90deg, var(--fx-ink), transparent); }
+.marquee::after { right: 0; background: linear-gradient(270deg, var(--fx-ink), transparent); }
+.track { display: flex; align-items: flex-start; gap: 1.1rem; width: max-content; padding-inline: 1.1rem; }
+/* every item is the same height, so tops and bottoms line up exactly */
+.track figure { margin: 0; flex: none; display: flex; flex-direction: column; align-items: center; }
+/* The shelf carries covers and full pages only. Every one of those sits between
+   0.65 and 0.73, so a single fixed height gives near-identical widths: the row
+   lines up AND each book fills its frame instead of floating in empty mat.
+   The wide double-page spreads are used as full-bleed bands instead. */
+/* Covers only. A fixed frame with the image CONTAINED means nothing can ever
+   spill out and nothing is cropped: the cream mat behind reads as the backing
+   board every one of these books is stored on. */
+.track .bk { display: block; padding: 0; border: 0; background: none; cursor: zoom-in; font: inherit; color: inherit; }
+.track .win { display: block;                      /* it is a span inside the button */
+  --h: clamp(190px,20vw,250px);
+  height: var(--h); width: calc(var(--h) * .68);
+  border: var(--bw) solid var(--fx-paper); background: var(--fx-paper); padding: 5px;
+  overflow: hidden; }
+.track .win img { width: 100%; height: 100%; object-fit: contain; display: block;
+  transition: transform .25s cubic-bezier(.22,.61,.36,1); }
+@media (hover:hover) and (prefers-reduced-motion: no-preference) {
+  .track .bk:hover .win img { transform: scale(1.06); }
+}
 
-  /* ---------- How it works ---------- */
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-  .step { padding: 1.5rem 1.4rem; display: flex; flex-direction: column; }
-  .step .step-no { font-family: var(--font-mono); font-weight: 700; font-size: 0.8rem; color: var(--red-ink); letter-spacing: 0.1em; }
-  .step h3 { font-size: 1.4rem; margin: 0.5rem 0 0.7rem; }
-  .step p { color: var(--ink-soft); font-size: 0.98rem; margin-bottom: 1rem; }
-  .routing { display: flex; gap: 0.5rem; margin-top: auto; flex-wrap: wrap; }
-  .route {
-    font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em;
-    text-transform: uppercase; padding: 0.3rem 0.55rem; border: 2px solid var(--line); color: var(--ink);
-    display: inline-flex; align-items: center; gap: 0.4rem;
-  }
-  .route::before { content: ""; width: 0.7rem; height: 0.7rem; border: 1px solid var(--line); }
-  .route.green::before { background: var(--green); }
-  .route.yellow::before { background: var(--yellow); }
-  .route.red::before { background: var(--red); }
-  @media (max-width: 800px) { .steps { grid-template-columns: 1fr; } }
+/* click a cover to size it up */
+.lb { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center;
+  background: rgba(10,8,6,.93); padding: clamp(1rem,4vw,3rem); }
+.lb[hidden] { display: none; }
+.lb figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: .9rem; max-height: 100%; }
+.lb img { max-width: min(92vw, 640px); max-height: 78vh; width: auto; height: auto;
+  border: var(--bw) solid var(--fx-paper); background: var(--fx-paper); }
+.lb figcaption { font-family: var(--display); font-weight: 400; font-size: 1.05rem; letter-spacing: .03em;
+  text-transform: uppercase; color: var(--fx-paper); }
+.lb .x { position: absolute; top: clamp(.8rem,2vw,1.4rem); right: clamp(.8rem,2vw,1.4rem);
+  width: 44px; height: 44px; display: grid; place-items: center; cursor: pointer;
+  background: var(--fx-paper); color: var(--fx-ink); border: var(--bw) solid var(--fx-ink);
+  font-family: var(--display); font-size: 1.2rem; line-height: 1; }
+.track figcaption { height: 1.6em; margin-top: .6rem; font-weight: 700; font-size: .6rem; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--fx-dim); white-space: nowrap; }
+/* the shelf the books stand on */
+.shelf-line { height: 6px; margin-top: .7rem; background: var(--red-solid); box-shadow: 0 3px 0 rgba(0,0,0,.45); }
+@media (prefers-reduced-motion: no-preference) {
+  .track { animation: slide 64s linear infinite; }
+  .marquee:hover .track { animation-play-state: paused; }
+}
+@keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-  /* ---------- Team ---------- */
-  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-  .member { padding: 1.5rem 1.4rem; }
-  .member .avatar {
-    width: 54px; height: 54px; display: grid; place-items: center; margin-bottom: 1rem;
-    border: 3px solid var(--line); background: var(--paper-2);
-    font-family: var(--font-display); font-weight: 800; font-size: 1.25rem;
-  }
-  .member h3 { font-size: 1.3rem; }
-  .member .role { font-family: var(--font-mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--red-ink); margin: 0.4rem 0 0.8rem; display: block; }
-  .member p { color: var(--ink-soft); font-size: 0.97rem; margin: 0; }
-  .team-foot { margin-top: 1.6rem; font-size: 0.98rem; color: var(--ink-soft); }
-  @media (max-width: 800px) { .team-grid { grid-template-columns: 1fr; } }
+/* ---------- CREW ---------- */
+.cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.3rem; margin-top: 2.2rem; }
+.card { border: var(--bw) solid var(--line); box-shadow: var(--pop); background: var(--card); overflow: hidden; }
+.card .head { display: flex; align-items: center; gap: .8rem; padding: .85rem 1rem; background: var(--fx-ink); border-bottom: var(--bw) solid var(--line); }
+.card .mug { width: 50px; height: 50px; flex: none; display: grid; place-items: center; background: var(--fx-yellow);
+  border: 2px solid var(--fx-paper); font-family: var(--display); font-weight: 400; font-size: 1.05rem; color: var(--fx-ink); }
+.card .head b { display: block; font-family: var(--display); font-weight: 400; font-size: 1.05rem; color: var(--fx-paper);
+  text-transform: uppercase; letter-spacing: .02em; line-height: 1.15; }
+.card .head span { display: block; margin-top: .18rem; font-weight: 700; font-size: .64rem; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--fx-yellow); }
+.card .body { padding: 1.1rem 1rem 1.2rem; }
+.card .body p { margin: 0; color: var(--ink-soft); font-size: .96rem; }
+.crew-foot { margin-top: 1.5rem; color: var(--ink-soft); font-size: .97rem; }
+@media (max-width: 880px) { .cards { grid-template-columns: 1fr; } }
 
-  /* ---------- Gallery ---------- */
-  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
-  .gallery-grid.has-photos figure { margin: 0; }
-  .photo {
-    margin: 0; border: 3px solid var(--line); box-shadow: var(--panel-shadow-sm); background: var(--card); overflow: hidden;
-  }
-  .photo img { display: block; width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3; }
-  .photo figcaption { padding: 0.7rem 0.85rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-soft); border-top: 3px solid var(--line); }
-  .panel-empty {
-    border: 3px dashed var(--line); aspect-ratio: 4 / 3; display: grid; place-items: center; text-align: center;
-    background-image: radial-gradient(var(--dot) 1.5px, transparent 1.6px); background-size: 12px 12px;
-    color: var(--ink-soft);
-  }
-  .panel-empty .cam { width: 30px; height: 30px; opacity: 0.55; margin-bottom: 0.5rem; }
-  .panel-empty .plabel { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; }
-  @media (max-width: 800px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 480px) { .gallery-grid { grid-template-columns: 1fr; } }
+/* ---------- PHOTO LOG (hidden until photos exist) ---------- */
+.logGrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; margin-top: 2.2rem; }
+.logGrid figure { margin: 0; border: var(--bw) solid var(--line); box-shadow: var(--pop); background: var(--card); overflow: hidden; }
+.logGrid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.logGrid figcaption { padding: .65rem .8rem; border-top: var(--bw) solid var(--line); font-weight: 600; font-size: .76rem; color: var(--ink-soft); }
+@media (max-width: 820px) { .logGrid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px) { .logGrid { grid-template-columns: 1fr; } }
 
-  /* ---------- Contact ---------- */
-  .contact { background: var(--ink-fixed); color: var(--paper-fixed); border-bottom: none; }
-  .contact .eyebrow { color: var(--orange-fixed); }
-  .contact .eyebrow::before { background: var(--orange-fixed); }
-  .contact .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
-  .contact h2 { color: var(--paper-fixed); font-size: clamp(2rem, 4.4vw, 3.1rem); }
-  .contact p { color: color-mix(in srgb, var(--paper-fixed) 80%, transparent); font-size: 1.1rem; }
-  .contact-card {
-    background: var(--card-fixed); color: var(--ink-fixed); border: 3px solid var(--ink-fixed); box-shadow: 6px 6px 0 var(--red);
-    padding: 1.6rem; text-align: center;
-  }
-  .contact-card .label { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.72rem; color: var(--muted-fixed); }
-  .contact-card .email { display: block; font-family: var(--font-display); font-weight: 700; font-size: clamp(1.05rem, 2.2vw, 1.4rem); margin: 0.4rem 0 1.1rem; word-break: break-word; color: inherit; text-decoration: none; }
-  .contact-card a.email:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
-  .contact-actions { display: flex; gap: 0.6rem; }
-  .contact-actions .btn { flex: 1; justify-content: center; }
-  #copyBtn { background: var(--card-fixed); color: var(--ink-fixed); border-color: var(--ink-fixed); }
-  .copy-status { min-height: 1.15em; margin: 0.7rem 0 0; font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted-fixed); }
-  @media (max-width: 780px) { .contact .wrap { grid-template-columns: 1fr; } }
+/* ---------- CONTACT ---------- */
+.contact .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(1.5rem,4vw,3rem); align-items: center; }
+.mail { --card:#FFFCF3; --ink:#16130F; --ink-soft:#4A443B; --line:#16130F;
+  background: var(--card); color: var(--ink); border: var(--bw) solid var(--line);
+  box-shadow: 7px 7px 0 var(--fx-yellow); padding: 1.5rem; text-align: center; }
+.mail .k { font-weight: 700; font-size: .66rem; letter-spacing: .15em; text-transform: uppercase; color: var(--ink-soft); }
+.mail a.addr { display: block; margin: .5rem 0 1.2rem; font-family: var(--display); font-weight: 400;
+  font-size: clamp(1rem,2vw,1.35rem); letter-spacing: .02em; color: var(--ink); text-decoration: none; word-break: break-word; }
+.mail a.addr:hover { color: var(--red-solid); }
+.mailrow { display: flex; gap: .6rem; }
+.mailrow .btn { flex: 1; border-color: var(--line); box-shadow: 4px 4px 0 var(--line); }
+.mail .status { min-height: 1.2em; margin: .8rem 0 0; font-weight: 600; font-size: .72rem; color: var(--ink-soft); line-height: 1.45; }
+@media (max-width: 820px) { .contact .wrap { grid-template-columns: 1fr; } }
 
-  /* ---------- Footer ---------- */
-  .site-footer { background: var(--paper); padding-block: 2.4rem; }
-  .site-footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; justify-content: space-between; }
-  .site-footer .sig { font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; }
-  .site-footer .meta { font-family: var(--font-mono); font-size: 0.76rem; color: var(--ink-soft); line-height: 1.7; }
-  .footer-brand { display: flex; align-items: center; gap: 0.8rem; }
-  .footer-logo { width: 46px; height: 46px; flex: none; border-radius: 50%; object-fit: cover; border: 2px solid var(--line); }
+/* ---------- FOOTER ---------- */
+.ftr { background: var(--fx-ink); color: var(--fx-dim); padding-block: 2.6rem; border-top: var(--bw) solid var(--fx-ink); }
+.ftr .top { display: grid; grid-template-columns: auto 1fr auto; gap: 1.1rem 2rem; align-items: center;
+  padding-bottom: 1.5rem; border-bottom: 1px solid rgba(246,238,221,.2); }
+.ftr svg { width: 42px; height: 42px; }
+.ftr .sig { font-family: var(--display); font-weight: 400; font-size: 1.1rem; color: var(--fx-paper); text-transform: uppercase; letter-spacing: .02em; }
+.ftr .fine { font-size: .73rem; line-height: 1.7; }
+.ftr .credit { margin-top: 1.3rem; font-size: .69rem; line-height: 1.75; color: var(--fx-dim); max-width: 88ch; }
+@media (max-width: 760px) { .ftr .top { grid-template-columns: auto 1fr; } .ftr .rt { grid-column: 1/-1; } }
 
-  /* ---------- Entrance motion ----------
-     Pure CSS: elements animate in on load and ALWAYS end visible. The resting
-     state is visible, so if the browser can't animate or the visitor prefers
-     reduced motion, content simply shows, so it can never get stuck hidden. */
-  @media (prefers-reduced-motion: no-preference) {
-    .reveal { animation: cfc-rise 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
-    .hero-text .reveal:nth-child(1) { animation-delay: 0.05s; }
-    .hero-text .reveal:nth-child(2) { animation-delay: 0.13s; }
-    .hero-text .reveal:nth-child(3) { animation-delay: 0.21s; }
-    .hero-text .reveal:nth-child(4) { animation-delay: 0.29s; }
-    .hero-art { animation: cfc-pop 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) 0.2s both; }
-  }
-  @keyframes cfc-rise {
-    from { opacity: 0; translate: 0 18px; }
-    to   { opacity: 1; translate: 0 0; }
-  }
-  @keyframes cfc-pop {
-    from { opacity: 0; scale: 0.82; }
-    to   { opacity: 1; scale: 1; }
-  }
-
-  /* ---------- Hover + idle micro-interactions (kept subtle on purpose) ----------
-     The comic "panels" lift a little on hover, and the tally star gives a slow
-     wobble so the count draws the eye. Uses transform for hover so it doesn't
-     fight the entrance animation (which animates the separate translate prop). */
-  .stat, .step, .member, .contact-card, .photo { transition: transform 0.18s ease, box-shadow 0.18s ease; }
-  .stat:hover, .step:hover, .member:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--shadow); }
-  .contact-card:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--red); }
-  .photo:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--shadow); }
-  .brand-burst { transition: transform 0.3s ease; }
-  .brand:hover .brand-burst { transform: rotate(-6deg) scale(1.06); }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .badge-star { animation: cfc-wobble 4s ease-in-out infinite; }
-  }
-  @keyframes cfc-wobble {
-    0%, 100% { transform: rotate(-8deg); }
-    50%      { transform: rotate(-3deg); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .btn, .theme-toggle, .btn .arrow,
-    .stat, .step, .member, .contact-card, .photo, .brand-burst { transition: none; }
-  }
+/* ---------- motion: resting state is always visible ---------- */
+.rv { opacity: 0; transform: translateY(15px); }
+.rv.in { opacity: 1; transform: none; transition: opacity .65s cubic-bezier(.22,.61,.36,1), transform .65s cubic-bezier(.22,.61,.36,1); }
+.rv-pop { opacity: 0; transform: scale(.9) rotate(-3deg); }
+.rv-pop.in { opacity: 1; transform: none; transition: opacity .5s cubic-bezier(.34,1.56,.64,1), transform .5s cubic-bezier(.34,1.56,.64,1); }
+.rv-d1.in { transition-delay: .08s; } .rv-d2.in { transition-delay: .16s; } .rv-d3.in { transition-delay: .24s; }
+@media (prefers-reduced-motion: reduce) {
+  .rv, .rv-pop { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .btn, .fan figure, .score, .brand svg, .tgl { transition: none; }
+}
 </style>
 </head>
 
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="site-header">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 64 64">
+    <path d="M14 5 H50 A11 11 0 0 1 61 16 V37 A11 11 0 0 1 50 48 H33 L17 61 L21.5 48 H14 A11 11 0 0 1 3 37 V16 A11 11 0 0 1 14 5 Z"
+          fill="#FBF4E3" stroke="#16130F" stroke-width="4.5" stroke-linejoin="round"/>
+    <path d="M32 41.5 C32 41.5 19.5 33.6 19.5 26.2 C19.5 22.1 22.8 18.8 26.9 18.8 C29.1 18.8 31.1 20 32 21.6 C32.9 20 34.9 18.8 37.1 18.8 C41.2 18.8 44.5 22.1 44.5 26.2 C44.5 33.6 32 41.5 32 41.5 Z"
+          fill="#C0151A" stroke="#16130F" stroke-width="3" stroke-linejoin="round"/>
+  </symbol>
+
+</svg>
+
+<header class="hdr" id="hdr">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Comics for Comfort home">
-      <img class="brand-burst" src="comicsforcomfortlogo.jpg" alt="" />
-      <span class="brand-name">Comics for Comfort</span>
+      <svg aria-hidden="true"><use href="#mark"/></svg>
+      <b>Comics for Comfort</b>
     </a>
-    <nav class="site-nav" aria-label="Sections">
+    <nav class="nav" aria-label="Sections">
       <span class="nav-links">
-        <a href="#tally">Tally</a>
         <a href="#mission">Mission</a>
-        <a href="#team">Who runs this</a>
-        <a href="#gallery">Gallery</a>
+        <a href="#count">Count</a>
+        <a href="#process">How it works</a>
+        <a href="#screen">Screening</a>
+        <a href="#shelf">Examples</a>
+        <a href="#crew">Who runs this</a>
         <a href="#contact">Contact</a>
       </span>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch between light and dark">
-        <svg class="i-sun" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <button class="tgl" id="tgl" type="button" aria-label="Switch between light and dark">
+        <svg class="i-sun" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4.4"/><path d="M12 2v2.2M12 19.8V22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2 12h2.2M19.8 12H22M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg>
         <svg class="i-moon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
       </button>
     </nav>
   </div>
 </header>
 
+<div class="strip">
+  <div class="wrap">
+    <span>Comics for Comfort <b>&middot;</b> Kinnelon, New Jersey</span>
+    <span>Issue No.&nbsp;1</span>
+    <span>Summer 2026</span>
+  </div>
+</div>
+
 <main id="main" tabindex="-1">
   <span id="top"></span>
 
-  <!-- ===================== HERO ===================== -->
+  <!-- ================= HERO ================= -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap">
-      <div class="hero-text">
-        <div class="cornerbox reveal">
-          <b>COMICS&nbsp;FOR&nbsp;COMFORT</b>
-          <span>No. 1 &middot; Summer &rsquo;26 &middot; Kinnelon, NJ</span>
+      <div>
+        <h1 id="hero-title" class="rv rv-d1">Comics that deserve a <span class="pop">second reader</span>.</h1>
+        <p class="lede rv rv-d2">We collect donated comic books, screen every issue for the right age group, and deliver them to clubs, libraries, children&rsquo;s hospitals, and troops serving overseas.</p>
+        <div class="hero-cta rv rv-d3">
+          <a class="btn btn--go" href="#contact">Donate comics <span class="arw" aria-hidden="true">&rarr;</span></a>
+          <a class="btn" href="#process">How it works</a>
         </div>
-        <h1 id="hero-title" class="reveal">Comfort, one <span class="pop">issue</span> at a time.</h1>
-        <p class="hero-lede reveal">We take piles of comics, check every one, and get them to kids&rsquo; clubs, libraries, children&rsquo;s hospitals, and troops overseas.</p>
-        <div class="hero-cta reveal">
-          <a class="btn btn--primary" href="#tally">See the tally <span class="arrow" aria-hidden="true">&rarr;</span></a>
-          <a class="btn" href="#contact">Get in touch</a>
-        </div>
-      </div>
-      <div class="hero-art">
-        <img class="hero-logo" src="comicsforcomfortlogo.jpg" alt="Comics for Comfort logo: an open book with a raised fist holding up a comic, over a heart" />
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== TALLY ===================== -->
-  <section class="section tally" id="tally" aria-labelledby="tally-title">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">The running tally</span>
-        <h2 id="tally-title">Everything starts at zero.</h2>
-      </div>
-      <div class="tally-grid" id="tallyGrid" role="list"><!-- filled by script --></div>
-      <div class="tally-note reveal">
-        <span class="badge-star" aria-hidden="true">
-          <svg viewBox="0 0 100 100"><path d="M50 2l9 15 17-7-3 18 18 4-13 13 13 13-18 4 3 18-17-7-9 15-9-15-17 7 3-18-18-4 13-13L9 32l18-4-3-18 17 7z" fill="var(--btn-red)" stroke="var(--line)" stroke-width="3" stroke-linejoin="round"/></svg>
-          <span>SO<br>FAR</span>
-        </span>
-        <span id="tallyUpdated">Nothing logged yet. Come back after our first sort day.</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== MISSION ===================== -->
-  <section class="section mission" id="mission" aria-labelledby="mission-title">
-    <div class="wrap">
-      <div class="mission-body reveal">
-        <span class="eyebrow">The mission</span>
-        <h2 id="mission-title" style="margin:0.7rem 0 1.3rem; font-size:clamp(2rem,4.4vw,3.1rem);">It&rsquo;s a pretty simple idea.</h2>
-        <p class="big">I&rsquo;m Holden Wood. I&rsquo;ve got a big comic collection, and people keep donating more, so I started Comics for Comfort to get all of it to folks who could use a good story.</p>
-        <p>Every comic gets bagged, boarded, sorted, and checked for the right age group before it goes anywhere. Then we drop it off around town or ship it to hospital charities and troops overseas, and we write down every delivery. We do this every week all summer, not just once.</p>
-        <p style="margin-bottom:0;">The whole point is comfort. Hand someone a good comic when they could use one.</p>
-      </div>
-      <aside class="mission-aside panel reveal">
-        <h3>How we treat every book</h3>
-        <ul class="rules">
-          <li><span class="chip" style="background:var(--green)"></span><span>Always bagged, boarded, and standing up in real comic boxes. Never dumped in loose.</span></li>
-          <li><span class="chip" style="background:var(--yellow)"></span><span>Checked by title and label so nothing ends up on the wrong shelf.</span></li>
-          <li><span class="chip" style="background:var(--red)"></span><span>We photograph the books, boxes, and crew. No faces or inside-the-building shots without written permission.</span></li>
-        </ul>
-      </aside>
-    </div>
-  </section>
-
-  <!-- ===================== HOW IT WORKS ===================== -->
-  <section class="section" id="how" aria-labelledby="how-title">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">How it works</span>
-        <h2 id="how-title">Here&rsquo;s how it goes.</h2>
-      </div>
-      <div class="steps">
-        <div class="step panel reveal">
-          <span class="step-no">STEP 01</span>
-          <h3>Collect &amp; stage</h3>
-          <p>Comics come out of the collection, already bagged and boarded, and go into labeled boxes. We count as we go.</p>
-        </div>
-        <div class="step panel reveal">
-          <span class="step-no">STEP 02</span>
-          <h3>Sort &amp; screen</h3>
-          <p>Every book gets a color: green, yellow, or red. That&rsquo;s how we make sure nothing ends up somewhere it shouldn&rsquo;t. Anything we&rsquo;re not sure about gets a second look.</p>
-          <div class="routing" role="group" aria-label="Screening categories">
-            <span class="route green">Green &middot; all-ages</span>
-            <span class="route yellow">Yellow &middot; review</span>
-            <span class="route red">Red &middot; adults only</span>
+        <div class="cover-foot rv rv-d3">
+          <div class="stamp">Every comic<b>Checked by hand</b></div>
+          <div class="barcode" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
           </div>
         </div>
-        <div class="step panel reveal">
-          <span class="step-no">STEP 03</span>
-          <h3>Deliver &amp; log</h3>
-          <p>Then we hand them off to local spots or ship them to hospital charities and troops overseas. Every drop gets written down and photographed.</p>
+      </div>
+
+      <div class="fan" aria-label="A fanned stack of donated comic books">
+        <figure><img src="art/SILVERSURFER.jpg" alt="Silver Surfer comic book cover" /></figure>
+        <figure><img src="art/XMEN.jpg" alt="X-Men Classics comic book cover" /></figure>
+        <figure><img src="art/IRONMAN.jpg" alt="The Invincible Iron Man comic book cover" /></figure>
+        <figure><img src="art/BATMAN.jpg" alt="Batman comic book cover" /></figure>
+        <figure><img src="art/SPIDERMAN.jpg" alt="Marvel Tales Spider-Man comic book cover" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MISSION ================= -->
+  <section class="band on-art" id="mission" aria-labelledby="mission-title">
+    <img src="art/Scene6.jpg" alt="" style="object-position:50% 68%" />
+      <div class="dots" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="inner">
+        <p class="caption rv-pop" style="margin-bottom:1.4rem;">Kinnelon, New Jersey &middot; Summer 2026</p>
+        <h2 class="big rv" id="mission-title">Why we started</h2>
+        <p class="rv rv-d1" style="margin-top:1.2rem;">I am Holden Wood, and I started Comics for Comfort in the summer of 2026. I had a large comic collection, people kept offering more, and it seemed wrong to leave all of it in storage when somebody out there could use a good story.</p>
+        <p class="rv rv-d2" style="margin-bottom:0;">Every issue we receive is bagged, boarded, sorted, and screened for the right age group before it goes anywhere. We hand deliver around town, ship to hospital charities and deployed units, and record every single delivery. We run a session every week through the summer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COUNT ================= -->
+  <section class="sec count" id="count" aria-labelledby="count-title">
+    <div class="wrap">
+      <span class="eyebrow">The running count</span>
+      <h2 class="big" id="count-title">Our numbers so far</h2>
+      <div class="scores" id="scores" role="list"></div>
+      <div class="count-foot">
+        <span class="burst rv-pop" aria-hidden="true">
+          <svg viewBox="0 0 120 120">
+            <path d="M60 3l9.6 17.4L88 12l-2.4 19.8L105 28l-9.6 17.4L114 52l-15.6 12L114 76l-18.6 6.6L105 100l-19.4-3.8L88 116l-18.4-8.4L60 125l-9.6-17.4L32 116l2.4-19.8L15 100l9.6-17.4L6 76l15.6-12L6 52l18.6-6.6L15 28l19.4 3.8L32 12l18.4 8.4z"
+                  fill="#FFD21E" stroke="#16130F" stroke-width="4" stroke-linejoin="round"/>
+          </svg>
+          <span>SO<br>FAR</span>
+        </span>
+        <span class="count-note" id="countNote">These figures match our master log and are updated after every sorting session.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROCESS ================= -->
+  <section class="sec" id="process" aria-labelledby="process-title">
+    <div class="wrap">
+      <span class="eyebrow">How it works</span>
+      <h2 class="big" id="process-title">How every session runs</h2>
+      <div class="steps">
+        <article class="step">
+          <div class="win rv">
+            <img src="art/Scene5.jpg" alt="Comic book panels in a row" loading="lazy" />
+            <span class="fxword">SORT!</span>
+          </div>
+          <span class="no">STEP 01</span>
+          <h3>Collect and stage</h3>
+          <p>Comics come out of storage, bagged and boarded, and go into labelled boxes. We count as we go.</p>
+        </article>
+        <article class="step">
+          <div class="win rv rv-d1">
+            <img src="art/Scene4.jpg" alt="Comic book panels showing a fight scene" loading="lazy" />
+            <span class="fxword">CHECK!</span>
+          </div>
+          <span class="no">STEP 02</span>
+          <h3>Sort and screen</h3>
+          <p>Every comic gets a colour: green, yellow, or red. Nothing moves until it has one.</p>
+        </article>
+        <article class="step">
+          <div class="win rv rv-d2">
+            <img src="art/Scene7.jpg" alt="Comic book spread showing two heroes flying above a city" loading="lazy" />
+            <span class="fxword">DELIVER!</span>
+          </div>
+          <span class="no">STEP 03</span>
+          <h3>Deliver and log</h3>
+          <p>Boxes go to clubs, libraries, hospitals, and units overseas. We write down every delivery.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SCREENING ================= -->
+  <section class="sec screen" id="screen" aria-labelledby="screen-title">
+    <div class="wrap">
+      <span class="eyebrow">Screening</span>
+      <h2 class="big" id="screen-title">Nobody has to guess</h2>
+      <p class="lede" style="margin-top:1rem;">Every book lands in one of three boxes. An adult clears the yellow and the red before anything leaves the table.</p>
+      <div class="boxes">
+        <div class="box rv">
+          <div class="lid" style="background:var(--green)"><b>Green</b><i>Safe for kids</i></div>
+          <div class="body"><p>Goes to clubs, libraries, and hospitals.</p></div>
+        </div>
+        <div class="box rv rv-d1">
+          <div class="lid" style="background:var(--yellow)"><b>Yellow</b><i>Not sure</i></div>
+          <div class="body"><p>An adult checks it before it goes anywhere.</p></div>
+        </div>
+        <div class="box rv rv-d2">
+          <div class="lid on-dark" style="background:var(--red-solid)"><b>Red</b><i>Adults only</i></div>
+          <div class="body"><p>Never goes in a box meant for kids.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== WHO RUNS THIS ===================== -->
-  <section class="section" id="team" aria-labelledby="team-title">
+  <!-- ================= SHELF ================= -->
+  <section class="shelf" id="shelf" aria-labelledby="shelf-title">
     <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Who runs this</span>
-        <h2 id="team-title">A small crew that shows up every week.</h2>
-      </div>
-      <div class="team-grid" id="teamGrid"><!-- filled by script --></div>
-      <p class="team-foot reveal" id="teamFoot"></p>
+      <span class="eyebrow">Examples</span>
+      <h2 class="big" id="shelf-title">What we look for</h2>
+      <p class="lede" style="margin-top:1rem;">A few examples of comics that pass screening. Click any cover to see it bigger.</p>
+    </div>
+    <div class="marquee">
+      <div class="track" id="track" aria-hidden="true"></div>
+    </div>
+    <div class="shelf-line" aria-hidden="true"></div>
+    <p class="sr">A scrolling row of example comic book covers. Select one to see it bigger.</p>
+  </section>
+
+  <!-- ================= CREW ================= -->
+  <section class="sec" id="crew" aria-labelledby="crew-title">
+    <div class="wrap">
+      <span class="eyebrow">Who runs this</span>
+      <h2 class="big" id="crew-title">The crew</h2>
+      <div class="cards" id="cards"></div>
+      <p class="crew-foot" id="crewFoot"></p>
     </div>
   </section>
 
-  <!-- ===================== GALLERY ===================== -->
-  <section class="section" id="gallery" aria-labelledby="gallery-title">
+  <!-- ================= PHOTO LOG (appears once photos are added) ================= -->
+  <section class="sec screen" id="log" aria-labelledby="log-title" hidden>
     <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">The gallery</span>
-        <h2 id="gallery-title">Photos.</h2>
-        <p id="galleryLede">Nothing here yet. First photos go up after our first sort day.</p>
-      </div>
-      <div class="gallery-grid" id="galleryGrid"><!-- filled by script --></div>
+      <span class="eyebrow">The photo log</span>
+      <h2 class="big" id="log-title">From the sorting table</h2>
+      <div class="logGrid" id="logGrid"></div>
     </div>
   </section>
 
-  <!-- ===================== CONTACT ===================== -->
-  <section class="section contact" id="contact" aria-labelledby="contact-title">
+  <!-- ================= CONTACT ================= -->
+  <section class="band contact on-art" id="contact" aria-labelledby="contact-title">
+    <img src="art/Scene3.jpg" alt="" style="object-position:58% 45%" />
+      <div class="dots" aria-hidden="true"></div>
     <div class="wrap">
-      <div class="reveal">
+      <div class="inner">
         <span class="eyebrow">Get in touch</span>
-        <h2 id="contact-title" style="margin-top:0.7rem;">Got comics? Know a place that could use some?</h2>
-        <p style="margin-bottom:0;">Back-stock to donate, a club or ward that&rsquo;d love some comics, or just a question? Email Holden. A real person writes back.</p>
+        <h2 class="big" id="contact-title">We would like to hear from you</h2>
+        <p style="margin:1.2rem 0 0;">If you have comics to donate, or you know a club, library, or ward that could use a delivery, please write to us. Holden reads and answers every message himself.</p>
       </div>
-      <div class="contact-card reveal">
-        <div class="label">Email us</div>
-        <a class="email" id="emailText" href="#">&nbsp;</a>
-        <div class="contact-actions">
-          <a class="btn btn--primary" id="emailBtn" href="#">Say hi <span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <div class="mail">
+        <div class="k">Write to us</div>
+        <a class="addr" id="addr" href="#">&nbsp;</a>
+        <div class="mailrow">
+          <a class="btn btn--go" id="mailBtn" href="#">Send a note <span class="arw" aria-hidden="true">&rarr;</span></a>
           <button class="btn" id="copyBtn" type="button">Copy</button>
         </div>
-        <p class="copy-status" id="copyStatus" role="status" aria-live="polite"></p>
+        <p class="status" id="copyStatus" role="status" aria-live="polite"></p>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="site-footer">
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Enlarged cover" hidden>
+  <button class="x" type="button" aria-label="Close">&times;</button>
+  <figure>
+    <img src="" alt="" />
+    <figcaption></figcaption>
+  </figure>
+</div>
+
+<footer class="ftr">
   <div class="wrap">
-    <div class="footer-brand">
-      <img class="footer-logo" src="comicsforcomfortlogo.jpg" alt="" />
+    <div class="top">
+      <svg aria-hidden="true"><use href="#mark"/></svg>
       <div>
         <div class="sig">Comics for Comfort</div>
-        <div class="meta">A summer 2026 service project &middot; Kinnelon, NJ</div>
+        <div class="fine">A summer 2026 service project from Kinnelon, New Jersey. Founded and run by Holden Wood.</div>
       </div>
+      <div class="fine rt">Issue No.&nbsp;1 &middot; Summer 2026<br>The figures on this page match our records.</div>
     </div>
-    <div class="meta" style="text-align:right;">
-      Run by Holden Wood.<br>
-      The numbers here match our records.
-    </div>
+    <p class="credit">
+      Comic artwork shown on this site is from classic comic books and remains the property of its respective
+      copyright holders. It appears here to show the kind of books we collect, sort, and donate. Comics for
+      Comfort is an independent volunteer project and is not affiliated with, endorsed by, or sponsored by any
+      comic book publisher.
+    </p>
   </div>
 </footer>
 
 <script>
-  /* ============================================================================
+  /* ==========================================================================
      ★★★  EDIT YOUR SITE HERE  ★★★
-     Change the values between the quotes below, save the file, and refresh your
-     browser. A few rules keep everything working:
-       • Keep every quote "  and comma ,  exactly where they already are.
-       • Don't type a straight quote " inside a value. Use an apostrophe ' instead.
-       • If something looks off after an edit, press Ctrl+Z to undo and re-save.
-     You don't need to read or change anything after the closing "};" below.
-     ============================================================================ */
+     Change the values between the quotes, save the file, refresh your browser.
+       • Leave every quote " and comma , where they already are.
+       • Don't type a straight quote " inside a value. Use an apostrophe ' .
+       • If something looks wrong, press Ctrl+Z to undo and save again.
+     You can stop reading after the closing "};" below.
+     ========================================================================== */
   window.SITE = {
 
-    // The email address people use to reach you. Change this to your real inbox.
+    // The email address people use to reach you.
     email: "comicsforcomfort.nj@gmail.com",
 
-    // ---- The running tally. Update after each sort / delivery, and keep these
-    //      identical to your master log. Type the number between the quotes.
+    // ---- The running count. Keep it the same as your master log.
     //      Commas are fine: "0", "1450", and "1,450" all work.
     tally: {
-      comicsSorted:     "0",   // total comics pulled + sorted so far
-      comicsDelivered:  "0",   // total comics handed over or shipped
-      facilitiesServed: "0",   // clubs, libraries, hospitals, units reached
-      shippingSpent:    "0"    // dollars spent on shipping (shown with a $)
+      comicsSorted:    "0",   // total comics pulled and sorted so far
+      comicsDelivered: "0",   // total comics handed over or shipped
+      placesServed:    "0",   // clubs, libraries, hospitals, units reached
+      shippingSpent:   "0"    // dollars spent on shipping (shown with a $)
     },
 
-    // Shown under the tally: the date you last updated the numbers, e.g.
-    // "July 12, 2026". Leave blank ("") to hide it. (The words "Last updated:"
-    // are added automatically, so don't type them here.)
+    // Date you last updated the numbers, e.g. "July 12, 2026".
+    // Leave "" to keep the standard note.
     tallyUpdated: "",
 
     // ---- Who runs this. Add, remove, or edit people freely.
-    //      "initials" shows in the little badge (keep it to 1 to 3 letters).
-    team: [
+    //      "initials" shows in the badge (1 to 3 letters).
+    crew: [
       {
         name: "Holden Wood",
         initials: "HW",
-        role: "Founder & Lead",
-        blurb: "Runs the sessions, keeps the log, sends the emails, and is who you'll hear back from."
+        role: "Founder and Lead",
+        blurb: "Runs the sessions, keeps the master log, handles outreach, and answers every message that comes in."
       },
       {
         name: "Diana Fitterman",
         initials: "DF",
         role: "Vice President",
-        blurb: "Helps run the sessions and outreach, and keeps the crew and deliveries organized."
+        blurb: "Shares the outreach and session work, and coordinates the crew and the delivery schedule."
       },
       {
         name: "Jason Wood",
         initials: "JW",
-        role: "Content Screener & Advisor",
-        blurb: "Has the final say on every book, so what we hand out always fits who's getting it."
+        role: "Content Screener",
+        blurb: "Reviews the yellow and red boxes and has the final say on every book we hand out."
       }
     ],
 
-    // A one-line note under the team (leave "" to hide it).
-    teamFootnote: "Plus a small crew each week: a few sorters, someone on photos, and a driver for post office runs and drop-offs.",
+    // One line under the crew. Leave "" to hide it.
+    crewFootnote: "A small crew joins each week: a few sorters, a documentarian on photographs, and a driver for post office runs and deliveries.",
 
-    // ---- The photo gallery. It is EMPTY on purpose right now.
-    //      To add a photo: put the image file in the "images" folder next to this
-    //      page, then add one line inside the [ ] below, for example:
-    //        { src: "images/sort-day-1.jpg",      caption: "First sort day - Week 2" },
+    // ---- Your own photographs.
+    //      Put image files in the "images" folder next to this page, then add
+    //      one line per photo inside the [ ] below, for example:
+    //        { src: "images/sort-day-1.jpg",      caption: "First sorting session, Week 2" },
     //        { src: "images/library-handoff.jpg", caption: "Delivery to Kinnelon Library" }
-    //      Filenames are case-sensitive once the site is online: images/Photo.JPG is
-    //      NOT the same as images/photo.jpg, so match the real file name exactly.
-    //      Privacy: photograph the books, boxes, and crew - no kids' or patients'
-    //      faces and no facility interiors without written permission.
+    //      The photo section stays hidden until you add at least one.
+    //      Filenames are case-sensitive once the site is online.
+    //      Privacy: photograph the books, boxes, and crew. No faces of children
+    //      or patients, and no facility interiors, without written permission.
     gallery: [
       // Add your { src: "...", caption: "..." } lines here, one per photo.
     ]
@@ -699,206 +799,264 @@
 </script>
 
 <script>
-  /* -------------------------------------------------------------------------
-     Builds the page from your settings above, reading them defensively. A typo
-     in the box above can't break the page's design or layout. At worst, the
-     one part you were editing falls back to a sensible default. No need to edit.
-     ------------------------------------------------------------------------- */
+  /* Builds the page from your settings above, defensively. */
   (function () {
     "use strict";
     var S = (window.SITE && typeof window.SITE === "object") ? window.SITE : {};
-    var $ = function (sel, root) { return (root || document).querySelector(sel); };
-
+    var $ = function (s, r) { return (r || document).querySelector(s); };
     function esc(s) {
       return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
         return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
       });
     }
-    // Accepts 0, 1450, "1450", or "1,450" (commas/$ stripped); anything odd -> 0.
     function toCount(raw) {
       if (typeof raw === "number" && isFinite(raw)) return Math.max(0, Math.floor(raw));
       if (typeof raw === "string") { var d = raw.replace(/[^0-9]/g, ""); return d ? parseInt(d, 10) : 0; }
       return 0;
     }
 
-    /* ---- Tally ---- */
-    var TALLY_FIELDS = [
-      { key: "comicsSorted",     label: "Comics sorted" },
-      { key: "comicsDelivered",  label: "Comics delivered" },
-      { key: "facilitiesServed", label: "Facilities served" },
-      { key: "shippingSpent",    label: "Spent on shipping", prefix: "$" }
+    var FIELDS = [
+      { k: "comicsSorted",    label: "Comics sorted" },
+      { k: "comicsDelivered", label: "Comics delivered" },
+      { k: "placesServed",    label: "Places served" },
+      { k: "shippingSpent",   label: "Spent on shipping", pre: "$" }
     ];
-    var grid = $("#tallyGrid");
+    var scores = $("#scores");
     var t = (S.tally && typeof S.tally === "object") ? S.tally : {};
-    if (grid) {
-      TALLY_FIELDS.forEach(function (f) {
-        var val = toCount(t[f.key]);
-        var pfx = f.prefix || "";
-        var cell = document.createElement("div");
-        cell.className = "stat panel reveal";
-        cell.setAttribute("role", "listitem");
-        cell.innerHTML =
-          '<div class="rule" aria-hidden="true"></div>' +
-          '<div class="num" data-target="' + val + '" data-prefix="' + esc(pfx) + '">' + esc(pfx) + '0</div>' +
-          '<span class="label">' + esc(f.label) + "</span>";
-        grid.appendChild(cell);
-      });
-    }
+    if (scores) FIELDS.forEach(function (f, i) {
+      var v = toCount(t[f.k]), pre = f.pre || "";
+      var el = document.createElement("div");
+      el.className = "score rv" + (i ? " rv-d" + Math.min(i, 3) : "");
+      el.setAttribute("role", "listitem");
+      el.innerHTML = '<div class="rule" aria-hidden="true"></div>' +
+                     '<div class="num" data-target="' + v + '" data-pre="' + esc(pre) + '">' + esc(pre) + '0</div>' +
+                     '<span class="k">' + esc(f.label) + '</span>';
+      el.querySelector('.num').classList.add('n');
+      scores.appendChild(el);
+    });
+    var upd = (typeof S.tallyUpdated === "string" ? S.tallyUpdated : "").trim();
+    if (upd && $("#countNote")) $("#countNote").textContent = "These figures match our master log. Last updated " + upd + ".";
 
-    var updated = (typeof S.tallyUpdated === "string" ? S.tallyUpdated : "").trim();
-    var upEl = $("#tallyUpdated");
-    if (upEl && updated) { upEl.textContent = "Last updated: " + updated; }
-    // else keep the friendly default already in the HTML
+    var cards = $("#cards");
+    var crew = Array.isArray(S.crew) ? S.crew : [];
+    if (cards) crew.forEach(function (m, i) {
+      if (!m || typeof m !== "object") return;
+      var nm = String(m.name || "");
+      var el = document.createElement("article");
+      el.className = "card rv" + (i ? " rv-d" + Math.min(i, 3) : "");
+      el.innerHTML =
+        '<div class="head"><div class="mug" aria-hidden="true">' + esc(m.initials || nm.charAt(0) || "?") + '</div>' +
+        '<div><b>' + esc(nm) + '</b><span>' + esc(m.role || "") + '</span></div></div>' +
+        '<div class="body"><p>' + esc(m.blurb || "") + '</p></div>';
+      cards.appendChild(el);
+    });
+    var foot = (typeof S.crewFootnote === "string" ? S.crewFootnote : "").trim();
+    if ($("#crewFoot")) { if (foot) $("#crewFoot").textContent = foot; else $("#crewFoot").style.display = "none"; }
 
-    /* ---- Team ---- */
-    var teamGrid = $("#teamGrid");
-    var team = Array.isArray(S.team) ? S.team : [];
-    if (teamGrid) {
-      team.forEach(function (m) {
-        if (!m || typeof m !== "object") return;
-        var nm = String(m.name || "");
-        var card = document.createElement("article");
-        card.className = "member panel reveal";
-        card.innerHTML =
-          '<div class="avatar" aria-hidden="true">' + esc(m.initials || nm.charAt(0) || "?") + "</div>" +
-          "<h3>" + esc(nm) + "</h3>" +
-          '<span class="role">' + esc(m.role || "") + "</span>" +
-          "<p>" + esc(m.blurb || "") + "</p>";
-        teamGrid.appendChild(card);
-      });
-    }
-    var foot = (typeof S.teamFootnote === "string" ? S.teamFootnote : "").trim();
-    var footEl = $("#teamFoot");
-    if (footEl) { if (foot) { footEl.textContent = foot; } else { footEl.style.display = "none"; } }
-
-    /* ---- Gallery ---- */
-    var gg = $("#galleryGrid");
-    var gallery = Array.isArray(S.gallery) ? S.gallery : [];
-    var photos = gallery.filter(function (p) { return p && typeof p === "object" && p.src; });
-    if (gg && photos.length) {
-      gg.classList.add("has-photos");
-      var lede = $("#galleryLede");
-      if (lede) lede.textContent = "Photos from the work, added as we go.";
-      photos.forEach(function (p) {
-        var caption = p.caption ? String(p.caption) : "";
+    var logSec = $("#log"), logGrid = $("#logGrid");
+    var gal = Array.isArray(S.gallery) ? S.gallery : [];
+    var shots = gal.filter(function (p) { return p && typeof p === "object" && p.src; });
+    if (logSec && logGrid && shots.length) {
+      logSec.hidden = false;
+      shots.forEach(function (p, i) {
+        var cap = p.caption ? String(p.caption) : "";
         var fig = document.createElement("figure");
-        fig.className = "photo reveal";
-        var cap = caption ? "<figcaption>" + esc(caption) + "</figcaption>" : "";
-        // With a visible caption, leave alt empty so screen readers don't read it twice.
-        var alt = caption ? "" : "Comics for Comfort";
-        fig.innerHTML = '<img src="' + esc(p.src) + '" alt="' + esc(alt) + '" loading="lazy">' + cap;
-        gg.appendChild(fig);
+        fig.className = "rv" + (i % 3 ? " rv-d" + (i % 3) : "");
+        fig.innerHTML = '<img src="' + esc(p.src) + '" alt="' + esc(cap ? "" : "Comics for Comfort") + '" loading="lazy">' +
+                        (cap ? '<figcaption>' + esc(cap) + '</figcaption>' : "");
+        logGrid.appendChild(fig);
       });
-    } else if (gg) {
-      var camSvg = '<svg class="cam" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2l1.2-1.8A1 1 0 0 1 8.6 4.7h6.8a1 1 0 0 1 .9.5L17.5 7h2A1.5 1.5 0 0 1 21 8.5v9A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5z"/><circle cx="12" cy="12.5" r="3.2"/></svg>';
-      for (var i = 1; i <= 6; i++) {
-        var cell = document.createElement("div");
-        cell.className = "panel-empty reveal";
-        cell.setAttribute("aria-hidden", "true");
-        cell.innerHTML = '<div>' + camSvg + '<div class="plabel">Panel ' + (i < 10 ? "0" + i : i) + "</div></div>";
-        gg.appendChild(cell);
-      }
-      var sr = document.createElement("p");
-      sr.style.cssText = "position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);";
-      sr.textContent = "No photos yet. Check back after our first sort day.";
-      gg.appendChild(sr);
     }
 
-    /* ---- Email: a mailto link (with a subject) plus a Copy button, so it
-            works even for someone with no mail app set up. ---- */
     var email = (typeof S.email === "string" ? S.email : "").trim();
-    var emailText = $("#emailText"), emailBtn = $("#emailBtn"),
-        copyBtn = $("#copyBtn"), copyStatus = $("#copyStatus");
+    var addr = $("#addr"), mailBtn = $("#mailBtn"), copyBtn = $("#copyBtn"), st = $("#copyStatus");
     if (email) {
-      var mailto = "mailto:" + email + "?subject=" + encodeURIComponent("Comics for Comfort");
-      if (emailText) { emailText.textContent = email; emailText.setAttribute("href", mailto); }
-      if (emailBtn) emailBtn.setAttribute("href", mailto);
-      if (copyBtn) {
-        copyBtn.addEventListener("click", function () {
-          function finish(ok) {
-            if (copyStatus) copyStatus.textContent = ok
-              ? ("Copied " + email + " to your clipboard.")
-              : ("Couldn't copy automatically. The address is " + email);
-            copyBtn.textContent = ok ? "Copied!" : "Copy";
-            setTimeout(function () { copyBtn.textContent = "Copy"; }, 1800);
-          }
-          function fallback() {
-            try {
-              var ta = document.createElement("textarea");
-              ta.value = email; ta.setAttribute("readonly", "");
-              ta.style.position = "fixed"; ta.style.top = "-1000px"; ta.style.opacity = "0";
-              document.body.appendChild(ta); ta.focus(); ta.select();
-              var ok = document.execCommand("copy");
-              document.body.removeChild(ta); finish(ok);
-            } catch (e) { finish(false); }
-          }
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(email).then(function () { finish(true); }, fallback);
-          } else { fallback(); }
-        });
-      }
+      var href = "mailto:" + email + "?subject=" + encodeURIComponent("Comics for Comfort");
+      if (addr) { addr.textContent = email; addr.setAttribute("href", href); }
+      if (mailBtn) mailBtn.setAttribute("href", href);
+      if (copyBtn) copyBtn.addEventListener("click", function () {
+        function done(ok) {
+          if (st) st.textContent = ok ? ("Copied " + email + " to your clipboard.")
+                                      : ("The address could not be copied automatically. It is " + email);
+          copyBtn.textContent = ok ? "Copied" : "Copy";
+          setTimeout(function () { copyBtn.textContent = "Copy"; }, 1800);
+        }
+        function fb() {
+          try {
+            var ta = document.createElement("textarea");
+            ta.value = email; ta.setAttribute("readonly", "");
+            ta.style.cssText = "position:fixed;top:-1000px;opacity:0";
+            document.body.appendChild(ta); ta.focus(); ta.select();
+            var ok = document.execCommand("copy");
+            document.body.removeChild(ta); done(ok);
+          } catch (e) { done(false); }
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email).then(function () { done(true); }, fb);
+        } else fb();
+      });
     } else {
-      if (emailText) { emailText.textContent = "Email coming soon"; emailText.removeAttribute("href"); }
-      [emailBtn, copyBtn].forEach(function (b) {
+      if (addr) { addr.textContent = "Email coming soon"; addr.removeAttribute("href"); }
+      [mailBtn, copyBtn].forEach(function (b) {
         if (!b) return;
-        b.removeAttribute("href");
-        b.setAttribute("aria-disabled", "true");
-        b.disabled = true;
-        b.style.opacity = "0.55";
-        b.style.pointerEvents = "none";
+        b.removeAttribute("href"); b.setAttribute("aria-disabled", "true");
+        b.disabled = true; b.style.opacity = ".55"; b.style.pointerEvents = "none";
       });
     }
   })();
 </script>
 
 <script>
-  /* -------------------------------------------------------------------------
-     Page behavior: the tally count-up and the light/dark toggle. Independent of
-     your edits above, so it keeps working no matter what.
-     ------------------------------------------------------------------------- */
+  /* Marquee, counters, reveals, nav state, theme. */
   (function () {
     "use strict";
-    var $ = function (s, r) { return (r || document).querySelector(s); };
-    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* COVERS ONLY. No interior pages here, and every one is portrait, so the
+       row stays even. Page scans and spreads are used elsewhere on the page. */
+    var SHELF = [
+      ["BATMAN.jpg","Batman"],
+      ["AVENGERS.jpg","The Avengers"],
+      ["XMEN.jpg","X-Men"],
+      ["IRONMAN.jpg","Iron Man"],
+      ["THEINCREDIBLEHULK.jpg","The Incredible Hulk"],
+      ["SPIDERMANNOMORE.jpg","Spider-Man No More"],
+      ["FANTASTICFOUR.jpg","Fantastic Four"],
+      ["SILVERSURFER.jpg","Silver Surfer"],
+      ["ANTMAN.jpg","Ant-Man"],
+      ["DRSTRANGECOVER.jpg","Doctor Strange"],
+      ["SPIDERMANANDVENOM.jpg","Spider-Man and Venom"],
+      ["SPIDERMAN.jpg","Marvel Tales"]
+    ];
+    var track = document.getElementById("track");
+    if (track) {
+      var html = SHELF.map(function (p) {
+        return '<figure><button type="button" class="bk" data-src="art/' + p[0] + '" data-cap="' + p[1] + '">' +
+               '<span class="win"><img src="art/' + p[0] + '" alt="' + p[1] + ' comic book cover" loading="lazy"></span>' +
+               '</button><figcaption>' + p[1] + '</figcaption></figure>';
+      }).join("");
+      track.innerHTML = html + html;   // two copies so -50% loops seamlessly
+    }
+
+    /* ---- click a cover to size it up ---- */
+    (function () {
+      var lb = document.getElementById("lb");
+      if (!lb || !track) return;
+      var lbImg = lb.querySelector("img"), lbCap = lb.querySelector("figcaption"), last = null;
+      function open(src, cap, from) {
+        last = from;
+        lbImg.setAttribute("src", src);
+        lbImg.setAttribute("alt", cap + " comic book cover, enlarged");
+        lbCap.textContent = cap;
+        lb.hidden = false;
+        document.body.style.overflow = "hidden";
+        lb.querySelector(".x").focus();
+      }
+      function close() {
+        lb.hidden = true;
+        document.body.style.overflow = "";
+        if (last) last.focus();
+      }
+      track.addEventListener("click", function (e) {
+        var b = e.target.closest(".bk");
+        if (b) open(b.getAttribute("data-src"), b.getAttribute("data-cap"), b);
+      });
+      lb.addEventListener("click", function (e) {
+        if (e.target === lb || e.target.closest(".x")) close();
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && !lb.hidden) close();
+      });
+    })();
 
     function countUp(el) {
-      var prefix = el.getAttribute("data-prefix") || "";
+      var pre = el.getAttribute("data-pre") || "";
       var target = parseInt(el.getAttribute("data-target"), 10) || 0;
-      if (reduceMotion || target === 0) { el.textContent = prefix + target.toLocaleString(); return; }
-      var dur = 1100, start = null;
+      if (reduce || target === 0) { el.textContent = pre + target.toLocaleString(); return; }
+      var dur = 1150, start = null;
       function frame(ts) {
         if (start === null) start = ts;
         var p = Math.min((ts - start) / dur, 1);
-        var eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = prefix + Math.round(eased * target).toLocaleString();
-        if (p < 1) requestAnimationFrame(frame);
-        else el.textContent = prefix + target.toLocaleString();
+        el.textContent = pre + Math.round((1 - Math.pow(1 - p, 3)) * target).toLocaleString();
+        if (p < 1) requestAnimationFrame(frame); else el.textContent = pre + target.toLocaleString();
       }
       requestAnimationFrame(frame);
     }
 
-    /* ---- Roll the tally numbers up (0 stays 0; real numbers count up) ---- */
-    document.querySelectorAll(".num").forEach(countUp);
+    var items = [].slice.call(document.querySelectorAll(".rv, .rv-pop"));
+    var counted = false;
+    function show(el) { el.classList.add("in"); }
+    function tick() {
+      var trigger = window.innerHeight * 0.92;
+      for (var i = items.length - 1; i >= 0; i--) {
+        if (items[i].getBoundingClientRect().top < trigger) { show(items[i]); items.splice(i, 1); }
+      }
+      if (!counted) {
+        var g = document.getElementById("scores");
+        if (g && g.getBoundingClientRect().top < trigger) {
+          counted = true; g.querySelectorAll(".n").forEach(countUp);
+        }
+      }
+    }
+    function revealAll() {
+      items.slice().forEach(show); items.length = 0;
+      if (!counted) { counted = true; document.querySelectorAll("#scores .n").forEach(countUp); }
+    }
+    if (reduce) revealAll();
+    else {
+      tick(); requestAnimationFrame(tick);
+      window.addEventListener("scroll", tick, { passive: true });
+      window.addEventListener("resize", tick);
+      setTimeout(revealAll, 4000);
+    }
 
-    /* ---- Light / dark toggle (remembers your choice) ---- */
-    var root = document.documentElement;
-    var toggle = $("#themeToggle");
-    if (toggle) {
-      var sun = $(".i-sun", toggle), moon = $(".i-moon", toggle);
-      function isDarkNow() {
+    var links = [].slice.call(document.querySelectorAll(".nav-links a"));
+    var secs = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+    function onScroll() {
+      var best = -1, bestTop = -Infinity;
+      for (var i = 0; i < secs.length; i++) {
+        if (!secs[i] || secs[i].hidden) continue;
+        var top = secs[i].getBoundingClientRect().top - 100;
+        if (top <= 0 && top > bestTop) { bestTop = top; best = i; }
+      }
+      links.forEach(function (a, i) { a.classList.toggle("on", i === best); });
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    var fan = document.querySelector(".fan");
+    if (fan && !reduce && window.matchMedia("(hover:hover) and (pointer:fine)").matches) {
+      var figs = [].slice.call(fan.querySelectorAll("figure"));
+      var raf = null, tx = 0;
+      function apply() {
+        raf = null;
+        figs.forEach(function (f, i) { f.style.translate = (tx * (i - 2) * 1.8) + "px 0"; });
+      }
+      fan.addEventListener("pointermove", function (e) {
+        var r = fan.getBoundingClientRect();
+        tx = ((e.clientX - r.left) / r.width - .5) * 2;
+        if (!raf) raf = requestAnimationFrame(apply);
+      });
+      fan.addEventListener("pointerleave", function () { tx = 0; if (!raf) raf = requestAnimationFrame(apply); });
+    }
+
+    var root = document.documentElement, tg = document.getElementById("tgl");
+    if (tg) {
+      var sun = tg.querySelector(".i-sun"), moon = tg.querySelector(".i-moon");
+      function isDark() {
         var c = root.getAttribute("data-theme");
         return c === "dark" || (!c && window.matchMedia("(prefers-color-scheme: dark)").matches);
       }
-      function setIcons(dark) {
-        sun.style.display = dark ? "none" : "block";
-        moon.style.display = dark ? "block" : "none";
-        toggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+      function icons(d) {
+        sun.style.display = d ? "none" : "block";
+        moon.style.display = d ? "block" : "none";
+        tg.setAttribute("aria-label", d ? "Switch to light mode" : "Switch to dark mode");
       }
-      setIcons(isDarkNow());
-      toggle.addEventListener("click", function () {
-        var next = isDarkNow() ? "light" : "dark";
+      icons(isDark());
+      tg.addEventListener("click", function () {
+        var next = isDark() ? "light" : "dark";
         root.setAttribute("data-theme", next);
-        setIcons(next === "dark");
+        icons(next === "dark");
         try { localStorage.setItem("cfc-theme", next); } catch (e) {}
       });
     }

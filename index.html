@@ -1,16 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!--
-  ============================================================================
-  COMICS FOR COMFORT
-  ----------------------------------------------------------------------------
-  ADMINS: you don't need to touch the design or layout.
-  Everything you'll actually change (email, tally numbers, the crew, photos)
-  lives in ONE box near the bottom. Search this file for:  EDIT YOUR SITE HERE
-  A plain-English guide is in README.md next to this file.
-  ============================================================================
--->
+
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Comics for Comfort</title>
@@ -40,18 +31,7 @@
 </script>
 
 <style>
-/* ============================================================================
-   CLASSIC COMIC SYSTEM
-   Four printing colours on newsprint, used the way a comic actually uses them:
-     RED     action. Exactly ONE red on the page (--red-solid). Buttons,
-             the publisher strip, key words, the logo heart, panel shadows.
-     YELLOW  fills and labels that sit on ink. Caption boxes, burst fills,
-             badges. Never small text on newsprint.
-     BLUE    structure. Secondary rules and focus.
-     INK     every outline and all body copy.
-   The comic artwork supplies everything else. Dark mode stays in the same
-   warm newsprint-and-ink family so the two themes are one design.
-   ========================================================================= */
+
 :root {
   --paper:    #F5EBD7;
   --paper-2:  #EADCBE;
@@ -60,9 +40,6 @@
   --ink:      #16130F;
   --ink-soft: #4A443B;
 
-  /* ONE red. --red-solid never changes, so the same red appears on the
-     button, the strip, the logo heart and the shadows in both themes.
-     --red is that same red as text, lifted only where a dark ground needs it. */
   --red-solid: #C0151A;
   --red:       #C0151A;
   --yellow:    #FFD21E;
@@ -74,12 +51,11 @@
   --focus:    var(--blue);
   --dot:      rgba(22,19,15,.16);
 
-  /* fixed: for artwork, dark bands and anything printed on colour */
   --fx-ink:    #16130F;
   --fx-paper:  #F7EFDC;
   --fx-dim:    #C6BBA4;
   --fx-yellow: #FFD21E;
-  --fx-scrim:  22,19,15;   /* the ink black, as rgb parts for band gradients */
+  --fx-scrim:  22,19,15;
 
   --display: "Anton", "Arial Narrow", Impact, system-ui, sans-serif;
   --fx:      "Bangers", "Anton", Impact, cursive;
@@ -91,8 +67,7 @@
   --pop: 6px 6px 0 var(--shadow);
   --pop-sm: 4px 4px 0 var(--shadow);
 }
-/* Dark mode is the same newsprint press run, printed at night: warm blacks
-   in the ink family, never a cool violet, so it sits with the fixed bands. */
+
 :root[data-theme="dark"] {
   --paper:    #17130E;
   --paper-2:  #1F1A13;
@@ -100,7 +75,7 @@
   --card:     #221C15;
   --ink:      #F6EEDD;
   --ink-soft: #C0B7A6;
-  --red:      #FF6A60;      /* the one red, lifted so it reads on dark */
+  --red:      #FF6A60;
   --line:     #F6EEDD;
   --shadow:   #000000;
   --focus:    #F3C969;
@@ -147,10 +122,8 @@ img { display: block; max-width: 100%; }
   padding: .7rem 1rem; font-weight: 700; border: var(--bw) solid var(--fx-ink); text-decoration: none; transition: top .18s ease; }
 .skip:focus { top: .8rem; }
 
-/* ---------- comic parts (drawn, not photographed) ---------- */
 .halftone { background-image: radial-gradient(var(--dot) 1.5px, transparent 1.6px); background-size: 7px 7px; }
 
-/* speech balloon, the same shape as the logo, used to carry the crew's own rule */
 .balloon { position: relative; background: var(--card); border: var(--bw) solid var(--line);
   border-radius: 26px; box-shadow: var(--pop); padding: 1.3rem 1.5rem; max-width: 46ch;
   font-family: var(--display); font-weight: 400; font-size: clamp(1.05rem,2.1vw,1.5rem);
@@ -161,27 +134,25 @@ img { display: block; max-width: 100%; }
 .balloon .sig { display: block; margin-top: .7rem; font-family: var(--body); font-weight: 700;
   font-size: .66rem; letter-spacing: .14em; color: var(--ink-soft); }
 
-/* yellow caption box: the narrator's voice */
 .caption {
   display: inline-block; background: var(--fx-yellow); color: var(--fx-ink);
   border: var(--bw) solid var(--fx-ink); box-shadow: var(--pop-sm);
   padding: .55rem .85rem; font-weight: 700; font-size: .76rem; letter-spacing: .1em;
   text-transform: uppercase; line-height: 1.4;
 }
-/* sound effect lettering */
+
 .fxword {
   font-family: var(--fx); color: var(--fx-yellow); line-height: .9; letter-spacing: .02em;
   -webkit-text-stroke: 3px var(--fx-ink); paint-order: stroke fill;
   text-shadow: 4px 4px 0 var(--fx-ink); transform: rotate(-6deg); display: inline-block;
 }
-/* section eyebrow */
+
 .eyebrow { display: inline-flex; align-items: center; gap: .55rem; font-weight: 700; font-size: .72rem;
   letter-spacing: .18em; text-transform: uppercase; color: var(--red); margin-bottom: .9rem; }
 .eyebrow::before { content: ""; width: 1.6rem; height: 4px; background: var(--red); }
 h2.big { font-size: clamp(2rem,5vw,3.4rem); }
 .lede { font-size: clamp(1.03rem,1.1vw,1.17rem); color: var(--ink-soft); max-width: 60ch; }
 
-/* ---------- buttons ---------- */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
   font-family: var(--display); font-size: 1rem; text-transform: uppercase; letter-spacing: .03em;
   text-decoration: none; cursor: pointer; padding: .85rem 1.4rem;
@@ -196,7 +167,6 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
 .on-art .btn:not(.btn--go) { background: var(--fx-paper); color: var(--fx-ink); }
 .on-art .btn:hover { box-shadow: 6px 6px 0 var(--fx-ink); }
 
-/* ---------- header ---------- */
 .hdr { position: sticky; top: 0; z-index: 70; background: var(--fx-ink); border-bottom: var(--bw) solid var(--fx-ink); }
 .hdr .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .5rem; }
 .brand { display: inline-flex; align-items: center; gap: .55rem; text-decoration: none; color: var(--fx-paper); flex: none; }
@@ -215,13 +185,11 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
 @media (max-width: 1000px) { .nav-links { display: none; } }
 @media (max-width: 340px) { .brand b { display: none; } }
 
-/* publisher strip, like the bar across the top of a cover */
 .strip { background: var(--red-solid); color: #fff; border-bottom: var(--bw) solid var(--fx-ink);
   font-weight: 700; font-size: .68rem; letter-spacing: .15em; text-transform: uppercase; }
 .strip .wrap { display: flex; flex-wrap: wrap; gap: .35rem 1.3rem; justify-content: space-between; padding-block: .5rem; }
 .strip b { color: var(--fx-yellow); }
 
-/* ---------- HERO / cover ---------- */
 .hero { border-bottom: var(--bw) solid var(--line); position: relative; overflow: clip; background: var(--paper-2); }
 .hero::before { content: ""; position: absolute; inset: 0;
   background-image: radial-gradient(var(--dot) 1.4px, transparent 1.5px); background-size: 9px 9px;
@@ -240,7 +208,6 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
 .barcode i { display: block; width: 2px; height: 100%; background: var(--ink); }
 .barcode i:nth-child(3n) { width: 3px; } .barcode i:nth-child(4n) { height: 76%; } .barcode i:nth-child(5n) { width: 1px; }
 
-/* fanned covers: real books, true proportions, nothing cropped */
 .fan { display: flex; align-items: flex-end; justify-content: center; padding-block: .8rem; }
 .fan figure { margin: 0; width: 27%; flex: none; transform-origin: bottom center;
   transition: transform .35s cubic-bezier(.22,.61,.36,1); }
@@ -264,13 +231,11 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
   .fan figure:nth-child(3) { width: 31%; }
 }
 
-/* ---------- full-bleed art bands ---------- */
 .band { position: relative; isolation: isolate; overflow: hidden; border-block: var(--bw) solid var(--fx-ink); }
 .band > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
 .band::after { content: ""; position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(98deg, rgba(var(--fx-scrim),.92) 0%, rgba(var(--fx-scrim),.82) 38%, rgba(var(--fx-scrim),.38) 70%, rgba(var(--fx-scrim),.12) 100%); }
-/* printed halftone over the artwork: authentic to newsprint, and it keeps the
-   scans from looking soft where a wide screen scales them up */
+
 .band .dots { position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background-image: radial-gradient(rgba(22,19,15,.30) 1.1px, transparent 1.2px);
   background-size: 5px 5px; mix-blend-mode: multiply; }
@@ -278,13 +243,12 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
 .band .inner { max-width: 46ch; color: var(--fx-paper); }
 .band h2 { color: var(--fx-paper); }
 .band p { color: var(--fx-paper); }
-/* the caption box keeps ink on yellow: .band p would otherwise tint it cream */
+
 .band p.caption, .band .caption { color: var(--fx-ink); }
 .band .eyebrow { color: var(--fx-yellow); }
 .band .eyebrow::before { background: var(--fx-yellow); }
 @media (max-width: 760px) { .band::after { background: linear-gradient(180deg, rgba(var(--fx-scrim),.90) 0%, rgba(var(--fx-scrim),.80) 62%, rgba(var(--fx-scrim),.62) 100%); } }
 
-/* ---------- COUNT ---------- */
 .count { background: var(--fx-ink); color: var(--fx-paper); border-block: var(--bw) solid var(--fx-ink); position: relative; overflow: hidden; }
 .count::before { content: ""; position: absolute; inset: 0;
   background-image: radial-gradient(rgba(246,238,221,.12) 1.4px, transparent 1.5px); background-size: 10px 10px; }
@@ -312,10 +276,9 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
 .count-note { font-weight: 600; font-size: .84rem; letter-spacing: .04em; color: var(--fx-dim); }
 @media (max-width: 800px) { .scores { grid-template-columns: repeat(2,1fr); } }
 
-/* ---------- PROCESS ---------- */
 .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.3rem; margin-top: 2.2rem; }
 .step { display: flex; flex-direction: column; }
-/* the art fills the whole panel edge to edge, like a printed frame */
+
 .step .win { position: relative; background: var(--paper-3); border: var(--bw) solid var(--line);
   box-shadow: var(--pop); aspect-ratio: 16 / 10; overflow: hidden; }
 .step .win img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -325,9 +288,6 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
 .step p { color: var(--ink-soft); font-size: .97rem; margin: 0; }
 @media (max-width: 880px) { .steps { grid-template-columns: 1fr; } }
 
-/* ---------- SCREENING ---------- */
-/* halftone dot field only, no burst. It fades in below the heading so the type
-   always lands on clean paper. */
 .screen { position: relative; overflow: hidden;
   background: var(--paper-2); border-block: var(--bw) solid var(--line); }
 .screen::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
@@ -338,7 +298,7 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
 .screen .wrap { position: relative; z-index: 1; }
 .screen .lede { max-width: 44ch; }
 .boxes { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.3rem; margin-top: 2.2rem; }
-/* Flat 2D sorting boxes: a coloured label bar with the category, card below. */
+
 .boxes { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.3rem; margin-top: 2.2rem; }
 .box { background: var(--card); border: var(--bw) solid var(--line); box-shadow: var(--pop); overflow: hidden; }
 .box .lid { display: flex; align-items: center; justify-content: space-between; gap: .6rem;
@@ -350,8 +310,7 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
   text-transform: uppercase; opacity: .8; }
 .box .body { padding: 1.15rem; }
 .box p { margin: 0; color: var(--ink-soft); font-size: .95rem; }
-/* laid out on the table at slight angles. Uses the rotate property, which is
-   independent of transform, so the scroll reveal cannot flatten it. */
+
 .boxes .box:nth-child(1) { rotate: -1.5deg; }
 .boxes .box:nth-child(2) { rotate:  .9deg; }
 .boxes .box:nth-child(3) { rotate: -.7deg; }
@@ -362,7 +321,6 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
 @media (prefers-reduced-motion: reduce) { .boxes .box { rotate: 0deg; } }
 @media (max-width: 880px) { .boxes { grid-template-columns: 1fr; } }
 
-/* ---------- SHELF (marquee) ---------- */
 .shelf { background: var(--fx-ink); color: var(--fx-paper); padding-block: clamp(3rem,6vw,4.8rem); overflow: hidden; }
 .shelf .eyebrow { color: var(--fx-yellow); } .shelf .eyebrow::before { background: var(--fx-yellow); }
 .shelf h2 { color: var(--fx-paper); }
@@ -372,17 +330,11 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
 .marquee::before { left: 0; background: linear-gradient(90deg, var(--fx-ink), transparent); }
 .marquee::after { right: 0; background: linear-gradient(270deg, var(--fx-ink), transparent); }
 .track { display: flex; align-items: flex-start; gap: 1.1rem; width: max-content; padding-inline: 1.1rem; }
-/* every item is the same height, so tops and bottoms line up exactly */
+
 .track figure { margin: 0; flex: none; display: flex; flex-direction: column; align-items: center; }
-/* The shelf carries covers and full pages only. Every one of those sits between
-   0.65 and 0.73, so a single fixed height gives near-identical widths: the row
-   lines up AND each book fills its frame instead of floating in empty mat.
-   The wide double-page spreads are used as full-bleed bands instead. */
-/* Covers only. A fixed frame with the image CONTAINED means nothing can ever
-   spill out and nothing is cropped: the cream mat behind reads as the backing
-   board every one of these books is stored on. */
+
 .track .bk { display: block; padding: 0; border: 0; background: none; cursor: zoom-in; font: inherit; color: inherit; }
-.track .win { display: block;                      /* it is a span inside the button */
+.track .win { display: block;
   --h: clamp(190px,20vw,250px);
   height: var(--h); width: calc(var(--h) * .68);
   border: var(--bw) solid var(--fx-paper); background: var(--fx-paper); padding: 5px;
@@ -393,7 +345,6 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
   .track .bk:hover .win img { transform: scale(1.06); }
 }
 
-/* click a cover to size it up */
 .lb { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center;
   background: rgba(10,8,6,.93); padding: clamp(1rem,4vw,3rem); }
 .lb[hidden] { display: none; }
@@ -408,7 +359,7 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
   font-family: var(--display); font-size: 1.2rem; line-height: 1; }
 .track figcaption { height: 1.6em; margin-top: .6rem; font-weight: 700; font-size: .6rem; letter-spacing: .12em;
   text-transform: uppercase; color: var(--fx-dim); white-space: nowrap; }
-/* the shelf the books stand on */
+
 .shelf-line { height: 6px; margin-top: .7rem; background: var(--red-solid); box-shadow: 0 3px 0 rgba(0,0,0,.45); }
 @media (prefers-reduced-motion: no-preference) {
   .track { animation: slide 64s linear infinite; }
@@ -416,7 +367,6 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
 }
 @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-/* ---------- CREW ---------- */
 .cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.3rem; margin-top: 2.2rem; }
 .card { border: var(--bw) solid var(--line); box-shadow: var(--pop); background: var(--card); overflow: hidden; }
 .card .head { display: flex; align-items: center; gap: .8rem; padding: .85rem 1rem; background: var(--fx-ink); border-bottom: var(--bw) solid var(--line); }
@@ -431,7 +381,6 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
 .crew-foot { margin-top: 1.5rem; color: var(--ink-soft); font-size: .97rem; }
 @media (max-width: 880px) { .cards { grid-template-columns: 1fr; } }
 
-/* ---------- PHOTO LOG (hidden until photos exist) ---------- */
 .logGrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; margin-top: 2.2rem; }
 .logGrid figure { margin: 0; border: var(--bw) solid var(--line); box-shadow: var(--pop); background: var(--card); overflow: hidden; }
 .logGrid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
@@ -439,7 +388,6 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
 @media (max-width: 820px) { .logGrid { grid-template-columns: repeat(2,1fr); } }
 @media (max-width: 480px) { .logGrid { grid-template-columns: 1fr; } }
 
-/* ---------- CONTACT ---------- */
 .contact .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(1.5rem,4vw,3rem); align-items: center; }
 .mail { --card:#FFFCF3; --ink:#16130F; --ink-soft:#4A443B; --line:#16130F;
   background: var(--card); color: var(--ink); border: var(--bw) solid var(--line);
@@ -453,7 +401,6 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
 .mail .status { min-height: 1.2em; margin: .8rem 0 0; font-weight: 600; font-size: .72rem; color: var(--ink-soft); line-height: 1.45; }
 @media (max-width: 820px) { .contact .wrap { grid-template-columns: 1fr; } }
 
-/* ---------- FOOTER ---------- */
 .ftr { background: var(--fx-ink); color: var(--fx-dim); padding-block: 2.6rem; border-top: var(--bw) solid var(--fx-ink); }
 .ftr .top { display: grid; grid-template-columns: auto 1fr auto; gap: 1.1rem 2rem; align-items: center;
   padding-bottom: 1.5rem; border-bottom: 1px solid rgba(246,238,221,.2); }
@@ -463,7 +410,6 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
 .ftr .credit { margin-top: 1.3rem; font-size: .69rem; line-height: 1.75; color: var(--fx-dim); max-width: 88ch; }
 @media (max-width: 760px) { .ftr .top { grid-template-columns: auto 1fr; } .ftr .rt { grid-column: 1/-1; } }
 
-/* ---------- motion: resting state is always visible ---------- */
 .rv { opacity: 0; transform: translateY(15px); }
 .rv.in { opacity: 1; transform: none; transition: opacity .65s cubic-bezier(.22,.61,.36,1), transform .65s cubic-bezier(.22,.61,.36,1); }
 .rv-pop { opacity: 0; transform: scale(.9) rotate(-3deg); }
@@ -524,12 +470,11 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
 <main id="main" tabindex="-1">
   <span id="top"></span>
 
-  <!-- ================= HERO ================= -->
-  <section class="hero" aria-labelledby="hero-title">
+  <section class="hero" aria-labelledby="t-heroTitle">
     <div class="wrap">
       <div>
-        <h1 id="hero-title" class="rv rv-d1">Comics that deserve a <span class="pop">second reader</span>.</h1>
-        <p class="lede rv rv-d2">We collect donated comic books, screen every issue for the right age group, and deliver them to clubs, libraries, children&rsquo;s hospitals, and troops serving overseas.</p>
+        <h1 id="t-heroTitle" class="rv rv-d1">Comics that deserve a <span class="pop">second reader</span>.</h1>
+        <p class="lede rv rv-d2" id="t-heroLede">We collect donated comic books, screen every issue for the right age group, and deliver them to clubs, libraries, children&rsquo;s hospitals, and troops serving overseas.</p>
         <div class="hero-cta rv rv-d3">
           <a class="btn btn--go" href="#contact">Donate comics <span class="arw" aria-hidden="true">&rarr;</span></a>
           <a class="btn" href="#process">How it works</a>
@@ -552,25 +497,23 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
     </div>
   </section>
 
-  <!-- ================= MISSION ================= -->
-  <section class="band on-art" id="mission" aria-labelledby="mission-title">
+  <section class="band on-art" id="mission" aria-labelledby="t-missionTitle">
     <img src="art/Scene6.jpg" alt="" style="object-position:50% 68%" />
       <div class="dots" aria-hidden="true"></div>
     <div class="wrap">
       <div class="inner">
-        <p class="caption rv-pop" style="margin-bottom:1.4rem;">Kinnelon, New Jersey &middot; Summer 2026</p>
-        <h2 class="big rv" id="mission-title">Why we started</h2>
-        <p class="rv rv-d1" style="margin-top:1.2rem;">I am Holden Wood, and I started Comics for Comfort in the summer of 2026. I had a large comic collection, people kept offering more, and it seemed wrong to leave all of it in storage when somebody out there could use a good story.</p>
-        <p class="rv rv-d2" style="margin-bottom:0;">Every issue we receive is bagged, boarded, sorted, and screened for the right age group before it goes anywhere. We hand deliver around town, ship to hospital charities and deployed units, and record every single delivery. We run a session every week through the summer.</p>
+        <p class="caption rv-pop" id="t-missionCaption" style="margin-bottom:1.4rem;">Kinnelon, New Jersey &middot; Summer 2026</p>
+        <h2 class="big rv" id="t-missionTitle">Why we started</h2>
+        <p class="rv rv-d1" id="t-missionP1" style="margin-top:1.2rem;">I am Holden Wood, and I started Comics for Comfort in the summer of 2026. I had a large comic collection, people kept offering more, and it seemed wrong to leave all of it in storage when somebody out there could use a good story.</p>
+        <p class="rv rv-d2" id="t-missionP2" style="margin-bottom:0;">Every issue we receive is bagged, boarded, sorted, and screened for the right age group before it goes anywhere. We hand deliver around town, ship to hospital charities and deployed units, and record every single delivery. We run a session every week through the summer.</p>
       </div>
     </div>
   </section>
 
-  <!-- ================= COUNT ================= -->
-  <section class="sec count" id="count" aria-labelledby="count-title">
+  <section class="sec count" id="count" aria-labelledby="t-countTitle">
     <div class="wrap">
       <span class="eyebrow">The running count</span>
-      <h2 class="big" id="count-title">Our numbers so far</h2>
+      <h2 class="big" id="t-countTitle">Our numbers so far</h2>
       <div class="scores" id="scores" role="list"></div>
       <div class="count-foot">
         <span class="burst rv-pop" aria-hidden="true">
@@ -580,16 +523,15 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
           </svg>
           <span>SO<br>FAR</span>
         </span>
-        <span class="count-note" id="countNote">These figures match our master log and are updated after every sorting session.</span>
+        <span class="count-note" id="t-countNote">These figures match our master log and are updated after every sorting session.</span>
       </div>
     </div>
   </section>
 
-  <!-- ================= PROCESS ================= -->
-  <section class="sec" id="process" aria-labelledby="process-title">
+  <section class="sec" id="process" aria-labelledby="t-processTitle">
     <div class="wrap">
       <span class="eyebrow">How it works</span>
-      <h2 class="big" id="process-title">How every session runs</h2>
+      <h2 class="big" id="t-processTitle">How every session runs</h2>
       <div class="steps">
         <article class="step">
           <div class="win rv">
@@ -597,8 +539,8 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
             <span class="fxword">SORT!</span>
           </div>
           <span class="no">STEP 01</span>
-          <h3>Collect and stage</h3>
-          <p>Comics come out of storage, bagged and boarded, and go into labelled boxes. We count as we go.</p>
+          <h3 id="t-step1Title">Collect and stage</h3>
+          <p id="t-step1Text">Comics come out of storage, bagged and boarded, and go into labelled boxes. We count as we go.</p>
         </article>
         <article class="step">
           <div class="win rv rv-d1">
@@ -606,8 +548,8 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
             <span class="fxword">CHECK!</span>
           </div>
           <span class="no">STEP 02</span>
-          <h3>Sort and screen</h3>
-          <p>Every comic gets a colour: green, yellow, or red. Nothing moves until it has one.</p>
+          <h3 id="t-step2Title">Sort and screen</h3>
+          <p id="t-step2Text">Every comic gets a colour: green, yellow, or red. Nothing moves until it has one.</p>
         </article>
         <article class="step">
           <div class="win rv rv-d2">
@@ -615,42 +557,40 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
             <span class="fxword">DELIVER!</span>
           </div>
           <span class="no">STEP 03</span>
-          <h3>Deliver and log</h3>
-          <p>Boxes go to clubs, libraries, hospitals, and units overseas. We write down every delivery.</p>
+          <h3 id="t-step3Title">Deliver and log</h3>
+          <p id="t-step3Text">Boxes go to clubs, libraries, hospitals, and units overseas. We write down every delivery.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ================= SCREENING ================= -->
-  <section class="sec screen" id="screen" aria-labelledby="screen-title">
+  <section class="sec screen" id="screen" aria-labelledby="t-screenTitle">
     <div class="wrap">
       <span class="eyebrow">Screening</span>
-      <h2 class="big" id="screen-title">Nobody has to guess</h2>
-      <p class="lede" style="margin-top:1rem;">Every book lands in one of three boxes. An adult clears the yellow and the red before anything leaves the table.</p>
+      <h2 class="big" id="t-screenTitle">Nobody has to guess</h2>
+      <p class="lede" id="t-screenLede" style="margin-top:1rem;">Every book lands in one of three boxes. An adult clears the yellow and the red before anything leaves the table.</p>
       <div class="boxes">
         <div class="box rv">
-          <div class="lid" style="background:var(--green)"><b>Green</b><i>Safe for kids</i></div>
-          <div class="body"><p>Goes to clubs, libraries, and hospitals.</p></div>
+          <div class="lid" style="background:var(--green)"><b>Green</b><i id="t-greenTag">Safe for kids</i></div>
+          <div class="body"><p id="t-greenText">Goes to clubs, libraries, and hospitals.</p></div>
         </div>
         <div class="box rv rv-d1">
-          <div class="lid" style="background:var(--yellow)"><b>Yellow</b><i>Not sure</i></div>
-          <div class="body"><p>An adult checks it before it goes anywhere.</p></div>
+          <div class="lid" style="background:var(--yellow)"><b>Yellow</b><i id="t-yellowTag">Not sure</i></div>
+          <div class="body"><p id="t-yellowText">An adult checks it before it goes anywhere.</p></div>
         </div>
         <div class="box rv rv-d2">
-          <div class="lid on-dark" style="background:var(--red-solid)"><b>Red</b><i>Adults only</i></div>
-          <div class="body"><p>Never goes in a box meant for kids.</p></div>
+          <div class="lid on-dark" style="background:var(--red-solid)"><b>Red</b><i id="t-redTag">Adults only</i></div>
+          <div class="body"><p id="t-redText">Never goes in a box meant for kids.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= SHELF ================= -->
-  <section class="shelf" id="shelf" aria-labelledby="shelf-title">
+  <section class="shelf" id="shelf" aria-labelledby="t-shelfTitle">
     <div class="wrap">
       <span class="eyebrow">Examples</span>
-      <h2 class="big" id="shelf-title">What we look for</h2>
-      <p class="lede" style="margin-top:1rem;">A few examples of comics that pass screening. Click any cover to see it bigger.</p>
+      <h2 class="big" id="t-shelfTitle">What we look for</h2>
+      <p class="lede" id="t-shelfLede" style="margin-top:1rem;">A few examples of comics that pass screening. Click any cover to see it bigger.</p>
     </div>
     <div class="marquee">
       <div class="track" id="track" aria-hidden="true"></div>
@@ -659,17 +599,15 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
     <p class="sr">A scrolling row of example comic book covers. Select one to see it bigger.</p>
   </section>
 
-  <!-- ================= CREW ================= -->
-  <section class="sec" id="crew" aria-labelledby="crew-title">
+  <section class="sec" id="crew" aria-labelledby="t-crewTitle">
     <div class="wrap">
       <span class="eyebrow">Who runs this</span>
-      <h2 class="big" id="crew-title">The crew</h2>
+      <h2 class="big" id="t-crewTitle">The crew</h2>
       <div class="cards" id="cards"></div>
-      <p class="crew-foot" id="crewFoot"></p>
+      <p class="crew-foot" id="t-crewFootnote"></p>
     </div>
   </section>
 
-  <!-- ================= PHOTO LOG (appears once photos are added) ================= -->
   <section class="sec screen" id="log" aria-labelledby="log-title" hidden>
     <div class="wrap">
       <span class="eyebrow">The photo log</span>
@@ -678,15 +616,14 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
     </div>
   </section>
 
-  <!-- ================= CONTACT ================= -->
-  <section class="band contact on-art" id="contact" aria-labelledby="contact-title">
+  <section class="band contact on-art" id="contact" aria-labelledby="t-contactTitle">
     <img src="art/Scene3.jpg" alt="" style="object-position:58% 45%" />
       <div class="dots" aria-hidden="true"></div>
     <div class="wrap">
       <div class="inner">
         <span class="eyebrow">Get in touch</span>
-        <h2 class="big" id="contact-title">We would like to hear from you</h2>
-        <p style="margin:1.2rem 0 0;">If you have comics to donate, or you know a club, library, or ward that could use a delivery, please write to us. Holden reads and answers every message himself.</p>
+        <h2 class="big" id="t-contactTitle">We would like to hear from you</h2>
+        <p id="t-contactLede" style="margin:1.2rem 0 0;">If you have comics to donate, or you know a club, library, or ward that could use a delivery, please write to us. Holden reads and answers every message himself.</p>
       </div>
       <div class="mail">
         <div class="k">Write to us</div>
@@ -729,77 +666,102 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
 </footer>
 
 <script>
-  /* ==========================================================================
-     ★★★  EDIT YOUR SITE HERE  ★★★
-     Change the values between the quotes, save the file, refresh your browser.
-       • Leave every quote " and comma , where they already are.
-       • Don't type a straight quote " inside a value. Use an apostrophe ' .
-       • If something looks wrong, press Ctrl+Z to undo and save again.
-     You can stop reading after the closing "};" below.
-     ========================================================================== */
-  window.SITE = {
+window.SITE = {
 
-    // The email address people use to reach you.
-    email: "comicsforcomfort.nj@gmail.com",
+  email: "comicsforcomfort.nj@gmail.com",
 
-    // ---- The running count. Keep it the same as your master log.
-    //      Commas are fine: "0", "1450", and "1,450" all work.
-    tally: {
-      comicsSorted:    "0",   // total comics pulled and sorted so far
-      comicsDelivered: "0",   // total comics handed over or shipped
-      placesServed:    "0",   // clubs, libraries, hospitals, units reached
-      shippingSpent:   "0"    // dollars spent on shipping (shown with a $)
+  tally: {
+    comicsSorted:    "0",
+    comicsDelivered: "0",
+    placesServed:    "0",
+    shippingSpent:   "0"
+  },
+  tallyUpdated: "",
+
+  text: {
+    heroTitle:      "Comics that deserve a second reader.",
+    heroTitlePop:   "second reader",
+    heroLede:       "We collect donated comic books, screen every issue for the right age group, and deliver them to clubs, libraries, children's hospitals, and troops serving overseas.",
+
+    missionCaption: "Kinnelon, New Jersey \u00b7 Summer 2026",
+    missionTitle:   "Why we started",
+    missionP1:      "I am Holden Wood, and I started Comics for Comfort in the summer of 2026. I had a large comic collection, people kept offering more, and it seemed wrong to leave all of it in storage when somebody out there could use a good story.",
+    missionP2:      "Every issue we receive is bagged, boarded, sorted, and screened for the right age group before it goes anywhere. We hand deliver around town, ship to hospital charities and deployed units, and record every single delivery. We run a session every week through the summer.",
+
+    countTitle:     "Our numbers so far",
+    countNote:      "These figures match our master log and are updated after every sorting session.",
+
+    processTitle:   "How every session runs",
+    step1Title:     "Collect and stage",
+    step1Text:      "Comics come out of storage, bagged and boarded, and go into labelled boxes. We count as we go.",
+    step2Title:     "Sort and screen",
+    step2Text:      "Every comic gets a colour: green, yellow, or red. Nothing moves until it has one.",
+    step3Title:     "Deliver and log",
+    step3Text:      "Boxes go to clubs, libraries, hospitals, and units overseas. We write down every delivery.",
+
+    screenTitle:    "Nobody has to guess",
+    screenLede:     "Every book lands in one of three boxes. An adult clears the yellow and the red before anything leaves the table.",
+    greenTag:       "Safe for kids",
+    greenText:      "Goes to clubs, libraries, and hospitals.",
+    yellowTag:      "Not sure",
+    yellowText:     "An adult checks it before it goes anywhere.",
+    redTag:         "Adults only",
+    redText:        "Never goes in a box meant for kids.",
+
+    shelfTitle:     "What we look for",
+    shelfLede:      "A few examples of comics that pass screening. Click any cover to see it bigger.",
+
+    crewTitle:      "The crew",
+    crewFootnote:   "A small crew joins each week: a few sorters, a documentarian on photographs, and a driver for post office runs and deliveries.",
+
+    contactTitle:   "We would like to hear from you",
+    contactLede:    "If you have comics to donate, or you know a club, library, or ward that could use a delivery, please write to us. Holden reads and answers every message himself."
+  },
+
+  crew: [
+    {
+      name: "Holden Wood",
+      initials: "HW",
+      role: "Founder and Lead",
+      blurb: "Runs the sessions, keeps the master log, handles outreach, and answers every message that comes in."
     },
+    {
+      name: "Diana Fitterman",
+      initials: "DF",
+      role: "Vice President",
+      blurb: "Shares the outreach and session work, and coordinates the crew and the delivery schedule."
+    },
+    {
+      name: "Jason Wood",
+      initials: "JW",
+      role: "Content Screener",
+      blurb: "Reviews the yellow and red boxes and has the final say on every book we hand out."
+    }
+  ],
 
-    // Date you last updated the numbers, e.g. "July 12, 2026".
-    // Leave "" to keep the standard note.
-    tallyUpdated: "",
+  covers: [
+    { file: "BATMAN.jpg",            name: "Batman" },
+    { file: "AVENGERS.jpg",          name: "The Avengers" },
+    { file: "XMEN.jpg",              name: "X-Men" },
+    { file: "IRONMAN.jpg",           name: "Iron Man" },
+    { file: "THEINCREDIBLEHULK.jpg", name: "The Incredible Hulk" },
+    { file: "SPIDERMANNOMORE.jpg",   name: "Spider-Man No More" },
+    { file: "FANTASTICFOUR.jpg",     name: "Fantastic Four" },
+    { file: "SILVERSURFER.jpg",      name: "Silver Surfer" },
+    { file: "ANTMAN.jpg",            name: "Ant-Man" },
+    { file: "DRSTRANGECOVER.jpg",    name: "Doctor Strange" },
+    { file: "SPIDERMANANDVENOM.jpg", name: "Spider-Man and Venom" },
+    { file: "SPIDERMAN.jpg",         name: "Marvel Tales" }
+  ],
 
-    // ---- Who runs this. Add, remove, or edit people freely.
-    //      "initials" shows in the badge (1 to 3 letters).
-    crew: [
-      {
-        name: "Holden Wood",
-        initials: "HW",
-        role: "Founder and Lead",
-        blurb: "Runs the sessions, keeps the master log, handles outreach, and answers every message that comes in."
-      },
-      {
-        name: "Diana Fitterman",
-        initials: "DF",
-        role: "Vice President",
-        blurb: "Shares the outreach and session work, and coordinates the crew and the delivery schedule."
-      },
-      {
-        name: "Jason Wood",
-        initials: "JW",
-        role: "Content Screener",
-        blurb: "Reviews the yellow and red boxes and has the final say on every book we hand out."
-      }
-    ],
+  gallery: [
+  ]
 
-    // One line under the crew. Leave "" to hide it.
-    crewFootnote: "A small crew joins each week: a few sorters, a documentarian on photographs, and a driver for post office runs and deliveries.",
-
-    // ---- Your own photographs.
-    //      Put image files in the "images" folder next to this page, then add
-    //      one line per photo inside the [ ] below, for example:
-    //        { src: "images/sort-day-1.jpg",      caption: "First sorting session, Week 2" },
-    //        { src: "images/library-handoff.jpg", caption: "Delivery to Kinnelon Library" }
-    //      The photo section stays hidden until you add at least one.
-    //      Filenames are case-sensitive once the site is online.
-    //      Privacy: photograph the books, boxes, and crew. No faces of children
-    //      or patients, and no facility interiors, without written permission.
-    gallery: [
-      // Add your { src: "...", caption: "..." } lines here, one per photo.
-    ]
-
-  };
-  /* ★★★  END OF EDITABLE SECTION. You can stop reading here.  ★★★ */
+};
 </script>
 
 <script>
-  /* Builds the page from your settings above, defensively. */
+
   (function () {
     "use strict";
     var S = (window.SITE && typeof window.SITE === "object") ? window.SITE : {};
@@ -814,6 +776,28 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
       if (typeof raw === "string") { var d = raw.replace(/[^0-9]/g, ""); return d ? parseInt(d, 10) : 0; }
       return 0;
     }
+
+    var T = (S.text && typeof S.text === "object") ? S.text : {};
+    Object.keys(T).forEach(function (k) {
+      var el = document.getElementById("t-" + k);
+      if (!el) return;
+      var v = T[k];
+      if (typeof v !== "string" || !v.trim()) return;
+      if (k === "heroTitle") {
+        var pop = (typeof T.heroTitlePop === "string" ? T.heroTitlePop : "").trim();
+        if (pop && v.indexOf(pop) > -1) {
+          var i = v.indexOf(pop);
+          el.textContent = "";
+          el.appendChild(document.createTextNode(v.slice(0, i)));
+          var sp = document.createElement("span");
+          sp.className = "pop"; sp.textContent = pop;
+          el.appendChild(sp);
+          el.appendChild(document.createTextNode(v.slice(i + pop.length)));
+          return;
+        }
+      }
+      el.textContent = v;
+    });
 
     var FIELDS = [
       { k: "comicsSorted",    label: "Comics sorted" },
@@ -907,38 +891,30 @@ h2.big { font-size: clamp(2rem,5vw,3.4rem); }
 </script>
 
 <script>
-  /* Marquee, counters, reveals, nav state, theme. */
+
   (function () {
     "use strict";
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    /* COVERS ONLY. No interior pages here, and every one is portrait, so the
-       row stays even. Page scans and spreads are used elsewhere on the page. */
-    var SHELF = [
-      ["BATMAN.jpg","Batman"],
-      ["AVENGERS.jpg","The Avengers"],
-      ["XMEN.jpg","X-Men"],
-      ["IRONMAN.jpg","Iron Man"],
-      ["THEINCREDIBLEHULK.jpg","The Incredible Hulk"],
-      ["SPIDERMANNOMORE.jpg","Spider-Man No More"],
-      ["FANTASTICFOUR.jpg","Fantastic Four"],
-      ["SILVERSURFER.jpg","Silver Surfer"],
-      ["ANTMAN.jpg","Ant-Man"],
-      ["DRSTRANGECOVER.jpg","Doctor Strange"],
-      ["SPIDERMANANDVENOM.jpg","Spider-Man and Venom"],
-      ["SPIDERMAN.jpg","Marvel Tales"]
-    ];
+    var CFG = (window.SITE && typeof window.SITE === "object") ? window.SITE : {};
+    function esc2(x) {
+      return String(x == null ? "" : x).replace(/[&<>"']/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+      });
+    }
+    var SHELF = (Array.isArray(CFG.covers) ? CFG.covers : [])
+      .filter(function (c) { return c && c.file; });
     var track = document.getElementById("track");
-    if (track) {
-      var html = SHELF.map(function (p) {
-        return '<figure><button type="button" class="bk" data-src="art/' + p[0] + '" data-cap="' + p[1] + '">' +
-               '<span class="win"><img src="art/' + p[0] + '" alt="' + p[1] + ' comic book cover" loading="lazy"></span>' +
-               '</button><figcaption>' + p[1] + '</figcaption></figure>';
+    if (track && SHELF.length) {
+      var html = SHELF.map(function (c) {
+        var f = esc2(c.file), n = esc2(c.name || "Comic book cover");
+        return '<figure><button type="button" class="bk" data-src="art/' + f + '" data-cap="' + n + '">' +
+               '<span class="win"><img src="art/' + f + '" alt="' + n + ' comic book cover" loading="lazy"></span>' +
+               '</button><figcaption>' + n + '</figcaption></figure>';
       }).join("");
-      track.innerHTML = html + html;   // two copies so -50% loops seamlessly
+      track.innerHTML = html + html;
     }
 
-    /* ---- click a cover to size it up ---- */
     (function () {
       var lb = document.getElementById("lb");
       if (!lb || !track) return;
